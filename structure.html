@@ -1,0 +1,1605 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>11za Website Structure</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
+    />
+    <link rel="stylesheet" href="assets/whatsapp-api-theme.css" />
+    <style>
+      :root {
+        color-scheme: light;
+        --navy: #0d163f;
+        --green: #09af72;
+        --deep: #0a8a66;
+        --mint: #e5fff2;
+        --red: #e5484d;
+        --line: #e2e9e6;
+        --soft: #f4f8f7;
+        --muted: #545c75;
+        --font:
+          "Plus Jakarta Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+        --mono: ui-monospace, Menlo, Consolas, monospace;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #fff;
+        color: var(--navy);
+        font-family: var(--font);
+        font-size: 16px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding-left: max(20px, env(safe-area-inset-left, 0px));
+        padding-right: max(20px, env(safe-area-inset-right, 0px));
+      }
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+      }
+      a {
+        color: var(--deep);
+      }
+      code {
+        font-family: var(--mono);
+        font-size: 0.8em;
+        color: var(--muted);
+      }
+      :focus-visible {
+        outline: 3px solid var(--green);
+        outline-offset: 3px;
+        border-radius: 6px;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+      header .wrap {
+        padding-block: 36px;
+        display: grid;
+        gap: 16px;
+      }
+      header h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 800;
+        line-height: 1.05;
+      }
+      header h1 span {
+        color: var(--green);
+      }
+      header p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 66ch;
+      }
+      .jump {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .jump a {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 6px 14px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--navy);
+      }
+      .jump a:hover {
+        border-color: var(--green);
+      }
+      .jump a.hp {
+        background: var(--green);
+        border-color: var(--green);
+      }
+      section {
+        padding-block: 48px;
+        border-bottom: 1px solid var(--line);
+      }
+      .eb {
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--deep);
+      }
+      section h2 {
+        font-size: clamp(1.5rem, 3vw, 2.1rem);
+        font-weight: 800;
+        margin: 6px 0 10px;
+      }
+      .lede {
+        color: var(--muted);
+        max-width: 68ch;
+        margin: 0 0 24px;
+      }
+      .refs {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      @media (max-width: 860px) {
+        .refs {
+          grid-template-columns: 1fr;
+        }
+      }
+      .ref {
+        background: var(--soft);
+        border-radius: 16px;
+        padding: 18px;
+      }
+      .ref b {
+        font-size: 1.05rem;
+      }
+      .ref p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .navmock {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 12px 18px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        margin-bottom: 22px;
+        box-shadow: 0 10px 30px rgba(13, 22, 63, 0.06);
+      }
+      .navmock .sp {
+        flex: 1;
+      }
+      .navmock .ai {
+        font-weight: 800;
+      }
+      .navmock i {
+        font-style: normal;
+        background: var(--red);
+        color: #fff;
+        font-size: 0.62rem;
+        font-weight: 800;
+        padding: 2px 6px;
+        border-radius: 99px;
+        margin-left: 4px;
+      }
+      .navmock .cta {
+        background: var(--green);
+        border-radius: 99px;
+        padding: 8px 16px;
+        font-weight: 800;
+      }
+      .tree {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      @media (max-width: 960px) {
+        .tree {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 600px) {
+        .tree {
+          grid-template-columns: 1fr;
+        }
+      }
+      .node {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px 18px;
+        display: grid;
+        gap: 6px;
+        align-content: start;
+        min-width: 0;
+      }
+      .nh {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+      }
+      .nh b {
+        font-size: 1.1rem;
+      }
+      .node ul {
+        list-style: none;
+        margin: 6px 0 0;
+        padding: 0;
+        display: grid;
+        gap: 2px;
+      }
+      .node li {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 6px 0;
+        border-top: 1px solid var(--line);
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .node li code {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 55%;
+      }
+      .pr {
+        font-size: 0.68rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        padding: 3px 8px;
+        border-radius: 99px;
+      }
+      .pr.p1 {
+        background: var(--green);
+        color: var(--navy);
+      }
+      .pr.p2 {
+        background: var(--mint);
+        color: var(--deep);
+      }
+      .pr.p3 {
+        background: var(--soft);
+        color: var(--muted);
+        border: 1px solid var(--line);
+      }
+      .legend {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-bottom: 18px;
+        align-items: center;
+      }
+      .bp {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        margin-bottom: 10px;
+        background: #fff;
+      }
+      .bp summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 16px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .bp summary::-webkit-details-marker {
+        display: none;
+      }
+      .bp summary span {
+        display: grid;
+        gap: 2px;
+      }
+      .bp summary b {
+        font-size: 1.05rem;
+      }
+      .bp[open] summary {
+        border-bottom: 1px solid var(--line);
+      }
+      .bpb {
+        padding: 16px 18px 18px;
+        display: grid;
+        gap: 14px;
+      }
+      .meta {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+      @media (max-width: 760px) {
+        .meta {
+          grid-template-columns: 1fr;
+        }
+      }
+      .meta div {
+        background: var(--soft);
+        border-radius: 12px;
+        padding: 10px 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .meta small {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        font-weight: 800;
+      }
+      .bpb ol {
+        margin: 0;
+        padding-left: 22px;
+        display: grid;
+        gap: 6px;
+      }
+      .bpb ol li {
+        padding-left: 4px;
+      }
+      .sh {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .tw {
+        overflow-x: auto;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        min-width: 640px;
+        font-size: 0.92rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 12px 10px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+      th {
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      td.num {
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+      .anims {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+      @media (max-width: 860px) {
+        .anims {
+          grid-template-columns: 1fr;
+        }
+      }
+      .an {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+      }
+      .an p {
+        margin: 6px 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .an small {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--deep);
+      }
+      .note {
+        background: var(--mint);
+        border-radius: 14px;
+        padding: 14px 16px;
+        font-size: 0.92rem;
+      }
+      footer {
+        padding-block: 28px;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+      /* Design guide samples use the same reusable theme as future pages. */
+      .theme-samples {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin: 24px 0;
+      }
+      .theme-sample.za-section {
+        padding: 24px 18px;
+        border: 1px solid var(--za-border);
+        border-radius: 18px;
+        min-height: 180px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 18px;
+      }
+      .theme-sample p {
+        margin: 0;
+        font-size: 0.85rem;
+      }
+      .theme-sample code {
+        color: inherit;
+        font-size: 0.74rem;
+      }
+      .theme-rules {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin: 22px 0;
+      }
+      .theme-rules h3 {
+        font-size: 1rem;
+      }
+      .theme-rules p {
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .theme-code {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        background: var(--navy);
+        color: #e5fff2;
+        border-radius: 14px;
+        padding: 18px;
+        font-size: 0.83rem;
+      }
+      .theme-code code {
+        color: inherit;
+        font-size: inherit;
+      }
+      #theme .tw {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+      }
+      @media (max-width: 860px) {
+        .theme-samples,
+        .theme-rules {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 520px) {
+        .theme-samples,
+        .theme-rules {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 754 240"
+          role="img"
+          aria-label="11za"
+          style="display: block; width: 130px; height: auto"
+        >
+          <path
+            d="M19.6 0C6.982 0 -2.346 11.852 0.521 24.242L37.093 182.269C39.161 191.21 47.066 197.534 56.172 197.534H164.402L230.192 234.922C233.061 236.552 236.524 234.104 235.981 230.829L230.462 197.534H261.553C271.495 197.534 279.86 190.026 281.013 180.07L299.298 22.042C300.655 10.305 291.558 0 279.838 0H19.6Z"
+            fill="#09AF72"
+          />
+          <path
+            d="M102.585 81.854C113.012 81.854 121.466 73.332 121.466 62.818C121.466 52.304 113.012 43.781 102.585 43.781C92.157 43.781 83.704 52.304 83.704 62.818C83.704 73.332 92.157 81.854 102.585 81.854Z"
+            fill="#0A8A66"
+          />
+          <path
+            d="M178.738 81.854C189.166 81.854 197.619 73.332 197.619 62.818C197.619 52.304 189.166 43.781 178.738 43.781C168.311 43.781 159.857 52.304 159.857 62.818C159.857 73.332 168.311 81.854 178.738 81.854Z"
+            fill="#0A8A66"
+          />
+          <path
+            d="M197.359 100.75C197.359 106.976 196.143 113.14 193.78 118.892C191.417 124.644 187.953 129.87 183.587 134.273C179.221 138.675 174.037 142.167 168.333 144.55C162.628 146.932 156.513 148.158 150.339 148.158C144.164 148.158 138.05 146.932 132.345 144.55C126.64 142.167 121.457 138.675 117.09 134.273C112.724 129.87 109.26 124.644 106.897 118.892C104.535 113.14 103.318 106.976 103.318 100.75H150.339H197.359Z"
+            fill="#0A8A66"
+          />
+          <path
+            d="M100.069 79.308C110.497 79.308 118.95 70.785 118.95 60.271C118.95 49.757 110.497 41.234 100.069 41.234C89.642 41.234 81.189 49.757 81.189 60.271C81.189 70.785 89.642 79.308 100.069 79.308Z"
+            fill="white"
+          />
+          <path
+            d="M176.223 79.308C186.65 79.308 195.103 70.785 195.103 60.271C195.103 49.757 186.65 41.234 176.223 41.234C165.795 41.234 157.342 49.757 157.342 60.271C157.342 70.785 165.795 79.308 176.223 79.308Z"
+            fill="white"
+          />
+          <path
+            d="M195.4 98.758C195.4 104.984 194.184 111.148 191.821 116.9C189.458 122.652 185.994 127.878 181.628 132.281C177.262 136.683 172.078 140.175 166.374 142.557C160.669 144.94 154.554 146.166 148.38 146.166C142.205 146.166 136.091 144.94 130.386 142.557C124.681 140.175 119.498 136.683 115.131 132.281C110.765 127.878 107.301 122.652 104.939 116.9C102.576 111.148 101.359 104.984 101.359 98.758H148.38H195.4Z"
+            fill="white"
+          />
+          <path
+            d="M355.062 157.683V54.142H331.55V35.047H377.264V157.683H355.062Z"
+            fill="#0D163F"
+          />
+          <path
+            d="M420.909 157.683V54.142H397.397V35.047H443.112V157.683H420.909Z"
+            fill="#0D163F"
+          />
+          <path
+            d="M489.141 137.04H544.074V157.683H460.8V138.789L515.383 56.215H460.8V35.572H544.074V54.466L489.141 137.04Z"
+            fill="#0D163F"
+          />
+          <path
+            d="M642.472 134.415H593.838L585.79 157.683H560.074L603.985 35.397H632.5L676.412 157.683H650.52L642.472 134.415ZM635.824 114.822L618.155 63.738L600.486 114.822H635.824Z"
+            fill="#0D163F"
+          />
+          <path
+            d="M724.993 63.365C719.695 63.365 714.843 62.048 710.441 59.415C706.112 56.782 702.642 53.283 700.031 48.919C697.493 44.48 696.225 39.627 696.225 34.361C696.225 28.943 697.493 24.053 700.031 19.689C702.642 15.325 706.112 11.864 710.441 9.30599C714.843 6.74799 719.695 5.46899 724.993 5.46899C728.947 5.46899 732.641 6.22099 736.074 7.72599C739.508 9.15599 742.53 11.187 745.141 13.82C747.752 16.454 749.806 19.539 751.298 23.075C752.789 26.611 753.536 30.373 753.536 34.361C753.536 39.627 752.269 44.48 749.73 48.919C747.192 53.283 743.762 56.782 739.432 59.415C735.103 62.048 730.29 63.365 724.993 63.365ZM724.993 55.352C728.799 55.352 732.269 54.412 735.403 52.531C738.537 50.65 741.036 48.129 742.902 44.969C744.769 41.734 745.701 38.198 745.701 34.361C745.701 30.448 744.73 26.912 742.79 23.752C740.924 20.517 738.425 17.959 735.291 16.078C732.232 14.196 728.799 13.256 724.993 13.256C721.039 13.256 717.493 14.234 714.359 16.19C711.225 18.071 708.726 20.629 706.859 23.865C704.993 27.025 704.061 30.523 704.061 34.361C704.061 38.273 704.993 41.847 706.859 45.082C708.726 48.242 711.261 50.763 714.471 52.644C717.681 54.449 721.187 55.352 724.993 55.352ZM712.792 49.596V19.012H726.112C729.395 19.012 732.12 19.839 734.283 21.495C736.447 23.075 737.53 25.671 737.53 29.282C737.53 31.614 736.97 33.495 735.85 34.925C734.807 36.355 733.463 37.483 731.821 38.311L738.201 49.596H729.358L723.65 39.214H721.075V49.596H712.792ZM721.075 32.216H726.336C727.231 32.216 727.939 31.915 728.463 31.313C729.059 30.712 729.358 29.997 729.358 29.169C729.358 28.266 729.059 27.552 728.463 27.025C727.939 26.423 727.231 26.122 726.336 26.122H721.075V32.216Z"
+            fill="#0D163F"
+          />
+        </svg>
+        <h1>11za website structure<span>.</span></h1>
+        <p>
+          Sitemap, page-by-page plan, shared WhatsApp API design system,
+          screenshot checklist and animation spec for the new 11za.com. Built on
+          the 11za brand kit, with ideas taken from DoubleTick, Royal POS and
+          Hisab Kitab.
+        </p>
+        <div class="jump">
+          <a class="hp" href="homepage.html">Open the homepage →</a
+          ><a href="#theme">Design system</a><a href="#ref">References</a
+          ><a href="#map">Sitemap</a><a href="#bp">Page plans</a
+          ><a href="#shots">Screenshots needed</a><a href="#anim">Animations</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="theme">
+        <div class="wrap">
+          <span class="eb"
+            >Shared design system · approved homepage direction</span
+          >
+          <h2>WhatsApp API technical theme for every new page</h2>
+          <p class="lede">
+            Use <a href="homepage.html">homepage.html</a> as the visual
+            reference for future pages. Keep the sitemap and page plans below;
+            apply this theme to each page type. External reference sites inform
+            structure and interactions; the current 11za homepage defines the
+            visual direction.
+          </p>
+          <div class="note">
+            <b>Default for all new pages:</b> a technical WhatsApp CRM
+            atmosphere with mint surfaces, visible chat / chatbot / API motifs,
+            circuit routes, connected workflows, white content panels and
+            selective dark console bands. Every section should belong to this
+            system; vary the treatment by purpose.
+          </div>
+          <div class="theme-samples">
+            <div class="theme-sample za-section za-hero">
+              <b>Network hero</b>
+              <p>Feature promise + product preview</p>
+              <code>za-section za-hero</code>
+            </div>
+            <div class="theme-sample za-section">
+              <b>Mint grid</b>
+              <p>Proof, industry cards, comparison, pricing, FAQ</p>
+              <code>za-section</code>
+            </div>
+            <div class="theme-sample za-section za-soft">
+              <b>Automation canvas</b>
+              <p>Feature rows, flows, stories, tool inputs</p>
+              <code>za-section za-soft</code>
+            </div>
+            <div class="theme-sample za-section za-dark">
+              <b>Connected system</b>
+              <p>Onboarding, implementation, workflow steps</p>
+              <code>za-section za-dark</code>
+            </div>
+          </div>
+          <div class="theme-rules">
+            <div class="za-card">
+              <h3>Palette &amp; typography</h3>
+              <p>
+                Plus Jakarta Sans, weights 500–800. Navy <code>#0D163F</code>,
+                primary green <code>#09AF72</code>, deep green
+                <code>#0A8A66</code>, mint <code>#E5FFF2</code>, light
+                <code>#F0FAF4</code>, soft <code>#E4F5EC</code>, dark green
+                <code>#063E32</code>. Use red for issues or LIVE indicators.
+              </p>
+            </div>
+            <div class="za-card">
+              <h3>Technical backgrounds</h3>
+              <p>
+                Reuse <a href="assets/crm-network.svg">crm-network.svg</a> for
+                hero edges and
+                <a href="assets/whatsapp-api-pattern.svg"
+                  >whatsapp-api-pattern.svg</a
+                >
+                for repeated chat, bot, API, analytics and connection motifs.
+                Grid spacing 48 px; motif tile 640 × 480 px. Keep the middle
+                quieter behind copy.
+              </p>
+            </div>
+            <div class="za-card">
+              <h3>Panels &amp; hierarchy</h3>
+              <p>
+                White-to-mint panels, green borders / top accents, 16–26 px
+                corner radii, restrained green shadows. Keep actual screenshots
+                opaque and sharply framed. Use eyebrow badges with a green node,
+                bold navy headings, pill CTAs and WhatsApp-style conversation
+                bubbles.
+              </p>
+            </div>
+            <div class="za-card">
+              <h3>Responsive &amp; accessible</h3>
+              <p>
+                Use a 1200 px content container, at least 20 px side gutters and
+                64–112 px section spacing. Stack columns on small screens.
+                Reduce motif tiles to 480 × 360 px and opacity to .36 on mobile.
+                Decorative layers must not capture clicks; keep text contrast
+                and visible keyboard focus. Respect reduced motion.
+              </p>
+            </div>
+          </div>
+          <h3>Section treatment by purpose</h3>
+          <div class="tw">
+            <table>
+              <thead>
+                <tr>
+                  <th>Section</th>
+                  <th>Background / component treatment</th>
+                  <th>Homepage reference</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hero</td>
+                  <td>
+                    Mint glow, circuit network edges, quiet center, large
+                    product or conversation preview.
+                  </td>
+                  <td><a href="homepage.html#product">Product hero</a></td>
+                </tr>
+                <tr>
+                  <td>Problems, industries, comparison, pricing, FAQ</td>
+                  <td>
+                    Mint grid with visible but low-contrast API motifs; white
+                    panels; green headers or selected states.
+                  </td>
+                  <td>
+                    <a href="homepage.html#industries">Industries</a> ·
+                    <a href="homepage.html#pricing">Pricing</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Features, integrations, stories, tools</td>
+                  <td>
+                    Richer mint automation canvas; framed screenshots, bot/chat
+                    motifs and light input panels.
+                  </td>
+                  <td>
+                    <a href="homepage.html#pillars">Feature pillars</a> ·
+                    <a href="homepage.html#shopify">Automations</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Workflow / onboarding</td>
+                  <td>
+                    Dark green grid, mint text, white step cards; dashed
+                    connections on a single desktop row. Remove connectors when
+                    cards wrap.
+                  </td>
+                  <td><a href="homepage.html#onboarding">Onboarding</a></td>
+                </tr>
+                <tr>
+                  <td>AI, calculator outputs, final CTA</td>
+                  <td>
+                    Navy console surface with green glow and API motifs. Use
+                    <code>za-console</code>; white text and mint supporting
+                    text.
+                  </td>
+                  <td>
+                    <a href="homepage.html#ai-calls">AI Calls</a> ·
+                    <a href="homepage.html#calculator">Calculator</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Footer / long reading / forms</td>
+                  <td>
+                    Light mint with quieter motifs. Put articles and form fields
+                    on opaque readable panels.
+                  </td>
+                  <td>Homepage footer</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <h3 style="margin-top: 24px">Reusable implementation</h3>
+          <p>
+            Load
+            <a href="assets/whatsapp-api-theme.css"
+              >assets/whatsapp-api-theme.css</a
+            >
+            on new pages, then apply its classes. Resolve the stylesheet URL
+            relative to the new page; SVG URLs inside the stylesheet already
+            resolve from the assets folder. These classes supply theme surfaces;
+            reuse the homepage layout, typography, buttons and responsive
+            components as needed.
+          </p>
+          <pre
+            class="theme-code"
+          ><code>&lt;link rel="stylesheet" href="assets/whatsapp-api-theme.css"&gt;
+&lt;section class="za-section za-soft"&gt;
+  &lt;div class="wrap"&gt;
+    &lt;span class="za-eyebrow"&gt;WhatsApp automation&lt;/span&gt;
+    &lt;h2&gt;A benefit specific to this page&lt;/h2&gt;
+    &lt;div class="za-card"&gt;Feature, chat preview or workflow&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+          <p class="note">
+            <b>New-page review:</b> follow the relevant page plan below; choose
+            a surface for every section; reuse both motif assets where suitable;
+            preserve readable content and real product evidence; check desktop
+            and mobile layouts, working CTAs, keyboard focus and reduced motion.
+            Do not invent customer results or API status indicators as
+            decoration.
+          </p>
+        </div>
+      </section>
+
+      <section id="ref">
+        <div class="wrap">
+          <span class="eb">What we're borrowing</span>
+          <h2>Reference sites</h2>
+          <div class="refs">
+            <div class="ref">
+              <b>DoubleTick</b>
+              <p>
+                Product tabs that swap screenshots in the hero · logo marquee ·
+                numbered problem section · feature pillars with testimonials ·
+                &quot;live in 24 hours&quot; steps · grouped Product mega menu
+              </p>
+            </div>
+            <div class="ref">
+              <b>Royal POS</b>
+              <p>
+                A page per industry · onboarding timeline · comparison table ·
+                ROI calculator · city pages for local SEO · demo form with
+                business type · floating WhatsApp button
+              </p>
+            </div>
+            <div class="ref">
+              <b>Hisab Kitab</b>
+              <p>
+                Announcement ticker · count-up stats · dedicated AI section ·
+                pricing toggle · free-tools pages for SEO · founder story ·
+                mobile app section with QR
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="map">
+        <div class="wrap">
+          <span class="eb">Sitemap</span>
+          <h2>52 pages in 9 groups</h2>
+          <p class="lede">
+            Main navigation below. Build P1 pages for launch, P2 within the next
+            month, and P3 for local search growth.
+          </p>
+          <div class="navmock">
+            <span class="lg"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 754 240"
+                role="img"
+                aria-label="11za"
+                style="display: block; width: 84px; height: auto"
+              >
+                <path
+                  d="M19.6 0C6.982 0 -2.346 11.852 0.521 24.242L37.093 182.269C39.161 191.21 47.066 197.534 56.172 197.534H164.402L230.192 234.922C233.061 236.552 236.524 234.104 235.981 230.829L230.462 197.534H261.553C271.495 197.534 279.86 190.026 281.013 180.07L299.298 22.042C300.655 10.305 291.558 0 279.838 0H19.6Z"
+                  fill="#09AF72"
+                />
+                <path
+                  d="M102.585 81.854C113.012 81.854 121.466 73.332 121.466 62.818C121.466 52.304 113.012 43.781 102.585 43.781C92.157 43.781 83.704 52.304 83.704 62.818C83.704 73.332 92.157 81.854 102.585 81.854Z"
+                  fill="#0A8A66"
+                />
+                <path
+                  d="M178.738 81.854C189.166 81.854 197.619 73.332 197.619 62.818C197.619 52.304 189.166 43.781 178.738 43.781C168.311 43.781 159.857 52.304 159.857 62.818C159.857 73.332 168.311 81.854 178.738 81.854Z"
+                  fill="#0A8A66"
+                />
+                <path
+                  d="M197.359 100.75C197.359 106.976 196.143 113.14 193.78 118.892C191.417 124.644 187.953 129.87 183.587 134.273C179.221 138.675 174.037 142.167 168.333 144.55C162.628 146.932 156.513 148.158 150.339 148.158C144.164 148.158 138.05 146.932 132.345 144.55C126.64 142.167 121.457 138.675 117.09 134.273C112.724 129.87 109.26 124.644 106.897 118.892C104.535 113.14 103.318 106.976 103.318 100.75H150.339H197.359Z"
+                  fill="#0A8A66"
+                />
+                <path
+                  d="M100.069 79.308C110.497 79.308 118.95 70.785 118.95 60.271C118.95 49.757 110.497 41.234 100.069 41.234C89.642 41.234 81.189 49.757 81.189 60.271C81.189 70.785 89.642 79.308 100.069 79.308Z"
+                  fill="white"
+                />
+                <path
+                  d="M176.223 79.308C186.65 79.308 195.103 70.785 195.103 60.271C195.103 49.757 186.65 41.234 176.223 41.234C165.795 41.234 157.342 49.757 157.342 60.271C157.342 70.785 165.795 79.308 176.223 79.308Z"
+                  fill="white"
+                />
+                <path
+                  d="M195.4 98.758C195.4 104.984 194.184 111.148 191.821 116.9C189.458 122.652 185.994 127.878 181.628 132.281C177.262 136.683 172.078 140.175 166.374 142.557C160.669 144.94 154.554 146.166 148.38 146.166C142.205 146.166 136.091 144.94 130.386 142.557C124.681 140.175 119.498 136.683 115.131 132.281C110.765 127.878 107.301 122.652 104.939 116.9C102.576 111.148 101.359 104.984 101.359 98.758H148.38H195.4Z"
+                  fill="white"
+                />
+                <path
+                  d="M355.062 157.683V54.142H331.55V35.047H377.264V157.683H355.062Z"
+                  fill="#0D163F"
+                />
+                <path
+                  d="M420.909 157.683V54.142H397.397V35.047H443.112V157.683H420.909Z"
+                  fill="#0D163F"
+                />
+                <path
+                  d="M489.141 137.04H544.074V157.683H460.8V138.789L515.383 56.215H460.8V35.572H544.074V54.466L489.141 137.04Z"
+                  fill="#0D163F"
+                />
+                <path
+                  d="M642.472 134.415H593.838L585.79 157.683H560.074L603.985 35.397H632.5L676.412 157.683H650.52L642.472 134.415ZM635.824 114.822L618.155 63.738L600.486 114.822H635.824Z"
+                  fill="#0D163F"
+                />
+                <path
+                  d="M724.993 63.365C719.695 63.365 714.843 62.048 710.441 59.415C706.112 56.782 702.642 53.283 700.031 48.919C697.493 44.48 696.225 39.627 696.225 34.361C696.225 28.943 697.493 24.053 700.031 19.689C702.642 15.325 706.112 11.864 710.441 9.30599C714.843 6.74799 719.695 5.46899 724.993 5.46899C728.947 5.46899 732.641 6.22099 736.074 7.72599C739.508 9.15599 742.53 11.187 745.141 13.82C747.752 16.454 749.806 19.539 751.298 23.075C752.789 26.611 753.536 30.373 753.536 34.361C753.536 39.627 752.269 44.48 749.73 48.919C747.192 53.283 743.762 56.782 739.432 59.415C735.103 62.048 730.29 63.365 724.993 63.365ZM724.993 55.352C728.799 55.352 732.269 54.412 735.403 52.531C738.537 50.65 741.036 48.129 742.902 44.969C744.769 41.734 745.701 38.198 745.701 34.361C745.701 30.448 744.73 26.912 742.79 23.752C740.924 20.517 738.425 17.959 735.291 16.078C732.232 14.196 728.799 13.256 724.993 13.256C721.039 13.256 717.493 14.234 714.359 16.19C711.225 18.071 708.726 20.629 706.859 23.865C704.993 27.025 704.061 30.523 704.061 34.361C704.061 38.273 704.993 41.847 706.859 45.082C708.726 48.242 711.261 50.763 714.471 52.644C717.681 54.449 721.187 55.352 724.993 55.352ZM712.792 49.596V19.012H726.112C729.395 19.012 732.12 19.839 734.283 21.495C736.447 23.075 737.53 25.671 737.53 29.282C737.53 31.614 736.97 33.495 735.85 34.925C734.807 36.355 733.463 37.483 731.821 38.311L738.201 49.596H729.358L723.65 39.214H721.075V49.596H712.792ZM721.075 32.216H726.336C727.231 32.216 727.939 31.915 728.463 31.313C729.059 30.712 729.358 29.997 729.358 29.169C729.358 28.266 729.059 27.552 728.463 27.025C727.939 26.423 727.231 26.122 726.336 26.122H721.075V32.216Z"
+                  fill="#0D163F"
+                /></svg></span
+            ><span>Product ▾</span><span>Solutions ▾</span
+            ><span class="ai">AI Calls <i>NEW</i></span
+            ><span>Pricing</span><span>Resources ▾</span><span>Company ▾</span
+            ><span class="sp"></span><span>Log in</span
+            ><span class="cta">Book a demo</span>
+          </div>
+          <div class="legend">
+            <span class="pr p1">P1</span> Launch
+            <span class="pr p2">P2</span> Month 2
+            <span class="pr p3">P3</span> SEO growth
+          </div>
+          <div class="tree">
+            <div class="node">
+              <div class="nh"><b>Home</b><span class="pr p1">P1</span></div>
+              <code>/</code>
+              <ul>
+                <li><span>Homepage</span><code>/</code></li>
+              </ul>
+            </div>
+            <div class="node">
+              <div class="nh"><b>Product</b><span class="pr p1">P1</span></div>
+              <code>/product/</code>
+              <ul>
+                <li>
+                  <span>Shared team inbox</span><code>/product/team-inbox</code>
+                </li>
+                <li>
+                  <span>Broadcast campaigns</span
+                  ><code>/product/broadcasts</code>
+                </li>
+                <li>
+                  <span>Chatbot &amp; flow builder</span
+                  ><code>/product/chatbot</code>
+                </li>
+                <li>
+                  <span>AI Calls · NEW</span><code>/product/ai-calls</code>
+                </li>
+                <li>
+                  <span>Shopify &amp; WooCommerce</span
+                  ><code>/product/shopify</code>
+                </li>
+                <li>
+                  <span>Analytics &amp; reports</span
+                  ><code>/product/analytics</code>
+                </li>
+                <li>
+                  <span>Integrations &amp; API</span
+                  ><code>/product/integrations</code>
+                </li>
+                <li><span>Mobile app</span><code>/product/mobile-app</code></li>
+                <li>
+                  <span>API setup &amp; blue tick</span
+                  ><code>/product/whatsapp-api-setup</code>
+                </li>
+              </ul>
+            </div>
+            <div class="node">
+              <div class="nh">
+                <b>Solutions</b><span class="pr p1">P1</span>
+              </div>
+              <code>/solutions/</code>
+              <ul>
+                <li>
+                  <span>Real estate</span><code>/solutions/real-estate</code>
+                </li>
+                <li>
+                  <span>D2C &amp; e-commerce</span
+                  ><code>/solutions/d2c-ecommerce</code>
+                </li>
+                <li>
+                  <span>Education &amp; coaching</span
+                  ><code>/solutions/education</code>
+                </li>
+                <li>
+                  <span>Clinics &amp; hospitals</span
+                  ><code>/solutions/healthcare</code>
+                </li>
+                <li>
+                  <span>Manufacturing &amp; B2B</span
+                  ><code>/solutions/manufacturing-b2b</code>
+                </li>
+                <li>
+                  <span>Travel &amp; tours</span><code>/solutions/travel</code>
+                </li>
+                <li>
+                  <span>Restaurants &amp; cafés</span
+                  ><code>/solutions/restaurants</code>
+                </li>
+                <li>
+                  <span>Jewellery &amp; retail</span
+                  ><code>/solutions/jewellery-retail</code>
+                </li>
+                <li>
+                  <span>For sales teams</span><code>/solutions/sales</code>
+                </li>
+                <li>
+                  <span>For marketing teams</span
+                  ><code>/solutions/marketing</code>
+                </li>
+                <li>
+                  <span>For support teams</span><code>/solutions/support</code>
+                </li>
+              </ul>
+            </div>
+            <div class="node">
+              <div class="nh"><b>Pricing</b><span class="pr p1">P1</span></div>
+              <code>/pricing</code>
+              <ul>
+                <li>
+                  <span>Plans, add-ons &amp; Meta charges</span
+                  ><code>/pricing</code>
+                </li>
+              </ul>
+            </div>
+            <div class="node">
+              <div class="nh">
+                <b>Resources</b><span class="pr p2">P2</span>
+              </div>
+              <code>/resources/</code>
+              <ul>
+                <li><span>Customer stories</span><code>/customers</code></li>
+                <li><span>Blog</span><code>/blog</code></li>
+                <li>
+                  <span>Knowledge center</span><code>/knowledge-center</code>
+                </li>
+                <li><span>API docs</span><code>/developers</code></li>
+                <li>
+                  <span>Template library</span><code>/resources/templates</code>
+                </li>
+                <li>
+                  <span>11za vs WhatsApp Business app</span
+                  ><code>/compare/whatsapp-business-app</code>
+                </li>
+              </ul>
+            </div>
+            <div class="node">
+              <div class="nh">
+                <b>Free tools</b><span class="pr p2">P2</span>
+              </div>
+              <code>/tools/</code>
+              <ul>
+                <li>
+                  <span>WhatsApp link generator</span
+                  ><code>/tools/whatsapp-link-generator</code>
+                </li>
+                <li>
+                  <span>WhatsApp QR code generator</span
+                  ><code>/tools/whatsapp-qr-code</code>
+                </li>
+                <li>
+                  <span>Conversation cost calculator</span
+                  ><code>/tools/conversation-cost-calculator</code>
+                </li>
+                <li>
+                  <span>Message formatter &amp; preview</span
+                  ><code>/tools/message-preview</code>
+                </li>
+                <li>
+                  <span>Lost-lead calculator</span
+                  ><code>/tools/lost-lead-calculator</code>
+                </li>
+              </ul>
+            </div>
+            <div class="node">
+              <div class="nh"><b>Company</b><span class="pr p2">P2</span></div>
+              <code>/company/</code>
+              <ul>
+                <li><span>About us</span><code>/about</code></li>
+                <li><span>Partner program</span><code>/partners</code></li>
+                <li><span>Events</span><code>/events</code></li>
+                <li><span>Careers</span><code>/careers</code></li>
+                <li><span>Contact</span><code>/contact</code></li>
+              </ul>
+            </div>
+            <div class="node">
+              <div class="nh">
+                <b>Local pages</b><span class="pr p3">P3</span>
+              </div>
+              <code>/whatsapp-api-in/</code>
+              <ul>
+                <li>
+                  <span>WhatsApp API in Surat</span
+                  ><code>/whatsapp-api-in/surat</code>
+                </li>
+                <li>
+                  <span>WhatsApp API in Ahmedabad</span
+                  ><code>/whatsapp-api-in/ahmedabad</code>
+                </li>
+                <li>
+                  <span>WhatsApp API in Mumbai</span
+                  ><code>/whatsapp-api-in/mumbai</code>
+                </li>
+                <li>
+                  <span>WhatsApp API in Pune</span
+                  ><code>/whatsapp-api-in/pune</code>
+                </li>
+                <li>
+                  <span>WhatsApp API in Bangalore</span
+                  ><code>/whatsapp-api-in/bangalore</code>
+                </li>
+                <li>
+                  <span>WhatsApp API in Delhi NCR</span
+                  ><code>/whatsapp-api-in/delhi ncr</code>
+                </li>
+                <li>
+                  <span>WhatsApp API in Jaipur</span
+                  ><code>/whatsapp-api-in/jaipur</code>
+                </li>
+                <li>
+                  <span>WhatsApp API in Hyderabad</span
+                  ><code>/whatsapp-api-in/hyderabad</code>
+                </li>
+              </ul>
+            </div>
+            <div class="node">
+              <div class="nh">
+                <b>Conversion &amp; legal</b><span class="pr p1">P1</span>
+              </div>
+              <code>/</code>
+              <ul>
+                <li><span>Book a demo</span><code>/demo</code></li>
+                <li><span>Sign up</span><code>/signup</code></li>
+                <li><span>Log in</span><code>app-v2.11za.in</code></li>
+                <li><span>Privacy</span><code>/privacy-policy</code></li>
+                <li><span>Terms</span><code>/terms-conditions</code></li>
+                <li><span>Refund policy</span><code>/refund-policy</code></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="bp">
+        <div class="wrap">
+          <span class="eb">Page plans</span>
+          <h2>Section order for every page type</h2>
+          <p class="lede">
+            Templates repeat: one product template covers 9 feature pages, one
+            industry template covers 8 solution pages. Copy for industry pages
+            can come straight from the post kit carousels. All templates inherit
+            the <a href="#theme">shared WhatsApp API design system</a> above,
+            with homepage.html as the visual reference.
+          </p>
+          <details class="bp" id="bp-home" open>
+            <summary>
+              <span><b>Homepage</b><code>/</code></span
+              ><span class="pr p1">P1</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Book a demo</div>
+                <div>
+                  <small>For</small>Every visitor: owners, sales heads,
+                  marketers
+                </div>
+                <div><small>Note</small>Built: see homepage.html</div>
+              </div>
+              <ol>
+                <li>Announcement ticker: AI Calls are here (NEW)</li>
+                <li>Header with Product and Solutions mega menus</li>
+                <li>
+                  Hero: typewriter headline + product tabs that swap screenshots
+                  (Inbox, Broadcasts, Chatbot, AI Calls, Shopify, Analytics)
+                </li>
+                <li>Customer logo marquee + count-up stats</li>
+                <li>
+                  Problem: &quot;WhatsApp on 10 phones is a black box&quot; (4
+                  numbered problems)
+                </li>
+                <li>
+                  Four pillars: Sell · Support · Automate · Analyse, each with a
+                  screenshot
+                </li>
+                <li>AI Calls band (navy) with live-call mock</li>
+                <li>Industry tiles linking to every solution page</li>
+                <li>Shopify automations strip</li>
+                <li>Comparison: 11za vs WhatsApp Business app</li>
+                <li>Lost-lead calculator (interactive)</li>
+                <li>
+                  Live in 3 days: dark green connected onboarding timeline
+                </li>
+                <li>Customer stories</li>
+                <li>Pricing: 3 plans + add-ons</li>
+                <li>
+                  Message cost calculator: people × category (Marketing ₹1,
+                  Utility ₹0.15)
+                </li>
+                <li>Integrations marquee</li>
+                <li>FAQ</li>
+                <li>Final CTA + mobile app</li>
+                <li>Footer with free tools and city links</li>
+              </ol>
+              <p class="sh">
+                <b>Screenshots:</b> inbox, broadcasts, chatbot, ai-calls,
+                shopify, analytics, mobile-app
+              </p>
+            </div>
+          </details>
+          <details class="bp" id="bp-product">
+            <summary>
+              <span
+                ><b>Product page (template, × 9)</b
+                ><code>/product/[feature]</code></span
+              ><span class="pr p1">P1</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Book a demo</div>
+                <div><small>For</small>Buyers comparing tools</div>
+                <div>
+                  <small>Note</small>Same template for all 9 product pages
+                </div>
+              </div>
+              <ol>
+                <li>Hero: feature promise + one large screenshot</li>
+                <li>
+                  3 outcome cards (&quot;what changes for your team&quot;)
+                </li>
+                <li>
+                  Feature deep-dive: 3–4 alternating rows (text + screenshot)
+                </li>
+                <li>Use case per industry (tabs)</li>
+                <li>Related features</li>
+                <li>Customer quote</li>
+                <li>FAQ (feature-specific)</li>
+                <li>CTA band</li>
+              </ol>
+              <p class="sh">
+                <b>Screenshots:</b> feature hero + 3 detail shots per feature
+              </p>
+            </div>
+          </details>
+          <details class="bp" id="bp-solution">
+            <summary>
+              <span
+                ><b>Industry page (template, × 8)</b
+                ><code>/solutions/[industry]</code></span
+              ><span class="pr p1">P1</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Book a demo for [industry]</div>
+                <div><small>For</small>Owners in that industry</div>
+                <div>
+                  <small>Note</small>Reuse carousel copy and hooks from the post
+                  kit
+                </div>
+              </div>
+              <ol>
+                <li>Hero: Hinglish pain line + industry chat mock</li>
+                <li>
+                  Hook visual from the brand kit (e.g. missed-call log for
+                  clinics)
+                </li>
+                <li>3 problems → 3 fixes, each with a WhatsApp flow mock</li>
+                <li>Day-in-the-life: morning, rush hour, closing</li>
+                <li>Templates for this industry (approved message examples)</li>
+                <li>Customer story from the industry</li>
+                <li>Pricing teaser + FAQ</li>
+                <li>CTA with industry pre-selected in the demo form</li>
+              </ol>
+              <p class="sh">
+                <b>Screenshots:</b> industry flow screenshot (chatbot or
+                broadcast for that use case)
+              </p>
+            </div>
+          </details>
+          <details class="bp" id="bp-team">
+            <summary>
+              <span
+                ><b>Team page (× 3: sales, marketing, support)</b
+                ><code>/solutions/[team]</code></span
+              ><span class="pr p2">P2</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Book a demo</div>
+                <div>
+                  <small>For</small>Sales heads, marketing managers, support
+                  leads
+                </div>
+              </div>
+              <ol>
+                <li>Hero for the role</li>
+                <li>Daily jobs 11za removes</li>
+                <li>Features mapped to the role</li>
+                <li>Manager visibility: reports and SLAs</li>
+                <li>CTA</li>
+              </ol>
+              <p class="sh">
+                <b>Screenshots:</b> analytics, team inbox with assignment
+              </p>
+            </div>
+          </details>
+          <details class="bp" id="bp-pricing">
+            <summary>
+              <span><b>Pricing</b><code>/pricing</code></span
+              ><span class="pr p1">P1</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Get started / Talk to sales</div>
+                <div><small>For</small>Ready-to-buy visitors</div>
+                <div><small>Note</small>Prices from 11za.com, plus GST</div>
+              </div>
+              <ol>
+                <li>Plan cards with monthly equivalent shown</li>
+                <li>
+                  3 plans: Half Yearly ₹10,000 · Yearly ₹15,000 · Custom ₹50,000
+                </li>
+                <li>Add-ons: extra user ₹2,000/yr · training ₹2,500</li>
+                <li>
+                  Meta conversation charges explained + cost calculator link
+                </li>
+                <li>Full feature comparison table</li>
+                <li>Pricing FAQ</li>
+                <li>CTA</li>
+              </ol>
+            </div>
+          </details>
+          <details class="bp" id="bp-ai-calls">
+            <summary>
+              <span
+                ><b>AI Calls (feature launch)</b
+                ><code>/product/ai-calls</code></span
+              ><span class="pr p1">P1</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Get early access</div>
+                <div>
+                  <small>For</small>Real estate, education, high-lead businesses
+                </div>
+                <div>
+                  <small>Note</small>Confirm feature details with the product
+                  team
+                </div>
+              </div>
+              <ol>
+                <li>NEW badge hero with live-call animation</li>
+                <li>
+                  How it works: lead in → call in seconds → qualify → book →
+                  summary
+                </li>
+                <li>Sample call recordings (audio players)</li>
+                <li>Questions you can set</li>
+                <li>Results area (add real numbers after pilot)</li>
+                <li>Early-access form</li>
+              </ol>
+              <p class="sh">
+                <b>Screenshots:</b> ai-calls, call summary in inbox
+              </p>
+            </div>
+          </details>
+          <details class="bp" id="bp-customers">
+            <summary>
+              <span><b>Customer stories</b><code>/customers</code></span
+              ><span class="pr p2">P2</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Book a demo</div>
+                <div><small>For</small>Prospects needing proof</div>
+                <div>
+                  <small>Note</small>Case-study YouTube videos already exist on
+                  11za.com
+                </div>
+              </div>
+              <ol>
+                <li>Filter by industry</li>
+                <li>Story cards with result headline</li>
+                <li>Video testimonials</li>
+                <li>Blue-tick customer wall</li>
+              </ol>
+            </div>
+          </details>
+          <details class="bp" id="bp-tools">
+            <summary>
+              <span
+                ><b>Free tool page (template, × 5)</b
+                ><code>/tools/[tool]</code></span
+              ><span class="pr p2">P2</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Try 11za free / Book a demo</div>
+                <div><small>For</small>Search traffic</div>
+                <div>
+                  <small>Note</small>Builds SEO traffic like Hisab Kitab free
+                  tools
+                </div>
+              </div>
+              <ol>
+                <li>Working tool above the fold</li>
+                <li>How to use it (3 steps)</li>
+                <li>Upgrade prompt: do this at scale with 11za</li>
+                <li>Related tools</li>
+                <li>FAQ for SEO</li>
+              </ol>
+            </div>
+          </details>
+          <details class="bp" id="bp-compare">
+            <summary>
+              <span
+                ><b>11za vs WhatsApp Business app</b
+                ><code>/compare/whatsapp-business-app</code></span
+              ><span class="pr p2">P2</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Book a demo</div>
+                <div><small>For</small>Businesses still on the free app</div>
+              </div>
+              <ol>
+                <li>Side-by-side table</li>
+                <li>When to switch (checklist)</li>
+                <li>Migration steps</li>
+                <li>FAQ</li>
+              </ol>
+            </div>
+          </details>
+          <details class="bp" id="bp-city">
+            <summary>
+              <span
+                ><b>City page (template, × 8)</b
+                ><code>/whatsapp-api-in/[city]</code></span
+              ><span class="pr p3">P3</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Book a demo</div>
+                <div>
+                  <small>For</small>Local search: &quot;WhatsApp API provider in
+                  Surat&quot;
+                </div>
+                <div><small>Note</small>Royal POS-style local SEO</div>
+              </div>
+              <ol>
+                <li>Hero with city name</li>
+                <li>Local customers and events</li>
+                <li>Industries common in the city</li>
+                <li>Office / support details</li>
+                <li>FAQ</li>
+              </ol>
+            </div>
+          </details>
+          <details class="bp" id="bp-about">
+            <summary>
+              <span><b>About us</b><code>/about</code></span
+              ><span class="pr p2">P2</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Contact</div>
+                <div><small>For</small>Partners, hires, cautious buyers</div>
+              </div>
+              <ol>
+                <li>Story: 1 Company – 1 Chat, built for MSMEs</li>
+                <li>Founder note (Nirmit Choraria)</li>
+                <li>Team photos</li>
+                <li>Startup India recognition, Meta Business Partner</li>
+                <li>Events (DV8, TiECon, Startup Xchange)</li>
+              </ol>
+            </div>
+          </details>
+          <details class="bp" id="bp-partners">
+            <summary>
+              <span><b>Partner program</b><code>/partners</code></span
+              ><span class="pr p2">P2</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Apply</div>
+                <div><small>For</small>Agencies, consultants, resellers</div>
+              </div>
+              <ol>
+                <li>Benefits and commission</li>
+                <li>Who should partner</li>
+                <li>How it works</li>
+                <li>Application form</li>
+              </ol>
+            </div>
+          </details>
+          <details class="bp" id="bp-demo">
+            <summary>
+              <span><b>Book a demo</b><code>/demo</code></span
+              ><span class="pr p1">P1</span>
+            </summary>
+            <div class="bpb">
+              <div class="meta">
+                <div><small>Primary CTA</small>Book</div>
+                <div><small>For</small>Hot leads</div>
+                <div>
+                  <small>Note</small>Business-type select feeds industry
+                  follow-up
+                </div>
+              </div>
+              <ol>
+                <li>
+                  Short form: name, WhatsApp number, business type, team size
+                </li>
+                <li>Calendly embed</li>
+                <li>What happens on the call</li>
+              </ol>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section id="shots">
+        <div class="wrap">
+          <span class="eb">From the 11za team</span>
+          <h2>Screenshots needed</h2>
+          <p class="lede">
+            Save each file with exactly this name in
+            <code>website/assets/screenshots/</code>. The homepage picks it up
+            automatically; until then it shows a branded placeholder.
+          </p>
+          <div class="tw">
+            <table>
+              <thead>
+                <tr>
+                  <th>File name</th>
+                  <th>What to capture</th>
+                  <th>Size (px)</th>
+                  <th>Used on</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>inbox.png</code></td>
+                  <td>Shared team inbox with assigned chats, tags and notes</td>
+                  <td class="num">1600 × 1000</td>
+                  <td>Home hero tab 1 · Team inbox page</td>
+                </tr>
+                <tr>
+                  <td><code>broadcasts.png</code></td>
+                  <td>Broadcast campaign builder + delivery/read report</td>
+                  <td class="num">1600 × 1000</td>
+                  <td>Home hero tab 2 · Broadcasts page</td>
+                </tr>
+                <tr>
+                  <td><code>chatbot.png</code></td>
+                  <td>Chatbot / flow builder canvas</td>
+                  <td class="num">1600 × 1000</td>
+                  <td>Home hero tab 3 · Chatbot page</td>
+                </tr>
+                <tr>
+                  <td><code>ai-calls.png</code></td>
+                  <td>AI call summary or call log screen</td>
+                  <td class="num">1600 × 1000</td>
+                  <td>Home hero tab 4 · AI Calls page</td>
+                </tr>
+                <tr>
+                  <td><code>shopify.png</code></td>
+                  <td>
+                    Shopify automations settings (cart, COD, order updates)
+                  </td>
+                  <td class="num">1600 × 1000</td>
+                  <td>Home hero tab 5 · Shopify page</td>
+                </tr>
+                <tr>
+                  <td><code>analytics.png</code></td>
+                  <td>Analytics dashboard (team performance, campaigns)</td>
+                  <td class="num">1600 × 1000</td>
+                  <td>Home hero tab 6 · Analytics page</td>
+                </tr>
+                <tr>
+                  <td><code>mobile-app.png</code></td>
+                  <td>11za mobile app inbox (phone screenshot)</td>
+                  <td class="num">750 × 1624</td>
+                  <td>Home final CTA · Mobile app page</td>
+                </tr>
+                <tr>
+                  <td><code>team-roles.png</code></td>
+                  <td>Team members, roles and permissions settings</td>
+                  <td class="num">1600 × 1000</td>
+                  <td>Home pillar &quot;Support as a team&quot;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note" style="margin-top: 16px">
+            Tips: use a clean demo account with realistic dummy data (no real
+            customer numbers), browser zoom at 100%, light mode, and crop out
+            the browser toolbar.
+          </p>
+        </div>
+      </section>
+      <section id="anim">
+        <div class="wrap">
+          <span class="eb">Motion</span>
+          <h2>Animation spec</h2>
+          <p class="lede">
+            All motion respects the visitor's "reduce motion" setting. Content
+            is always readable without it.
+          </p>
+          <div class="anims">
+            <div class="an">
+              <b>Typewriter hero</b>
+              <p>
+                Headline types a phrase, pauses, deletes and types the next. The
+                product tab below switches to match.
+              </p>
+              <small>Home hero</small>
+            </div>
+            <div class="an">
+              <b>Auto-advancing product tabs</b>
+              <p>
+                Six tabs with a green progress bar; screenshot slides and fades
+                when the tab changes. Click to pin a tab.
+              </p>
+              <small>Home hero, product pages</small>
+            </div>
+            <div class="an">
+              <b>Logo + integration marquees</b>
+              <p>Infinite horizontal scroll, pauses on hover.</p>
+              <small>Home, pricing</small>
+            </div>
+            <div class="an">
+              <b>Count-up stats</b>
+              <p>2000+, 10M+, 50+ count up when they scroll into view.</p>
+              <small>Home</small>
+            </div>
+            <div class="an">
+              <b>Scroll reveal</b>
+              <p>
+                Sections fade up 24 px with a small stagger as they enter the
+                screen.
+              </p>
+              <small>All pages</small>
+            </div>
+            <div class="an">
+              <b>Floating chat bubbles</b>
+              <p>WhatsApp bubbles drift in around the hero screenshot.</p>
+              <small>Home hero, industry heroes</small>
+            </div>
+            <div class="an">
+              <b>AI call waveform</b>
+              <p>Live waveform + pulsing red LIVE dot on the AI Calls mock.</p>
+              <small>Home, AI Calls page</small>
+            </div>
+            <div class="an">
+              <b>Lost-lead calculator</b>
+              <p>Numbers tick as sliders move.</p>
+              <small>Home, tools</small>
+            </div>
+            <div class="an">
+              <b>Sticky header</b>
+              <p>Header shrinks and gains a shadow after scrolling.</p>
+              <small>All pages</small>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="wrap">
+        11za website plan v2 · 2 Nov 2026 · Shared WhatsApp API theme · Engees
+        Communications Pvt Ltd
+      </div>
+    </footer>
+  </body>
+</html>

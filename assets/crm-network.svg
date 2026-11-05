@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" fill="none">
+  <!-- Decorative automation routes and conversation nodes, kept at the edges. -->
+  <g stroke="#09AF72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity=".32">
+    <path d="M0 106h112l42 42h86v132l56 56h66M0 430h76l52-52h104v174l64 64M0 748h112l56-56h112v126l70 70M1600 92h-124l-58 58h-72v140l-60 60h-48M1600 444h-76l-52-52h-110v174l-64 64M1600 794h-118l-56-56h-104v104l-68 68"/>
+    <path d="M60 0v210l48 48v72M1540 0v230l-48 48v60M42 1000V878l54-54M1558 1000V900l-50-50" stroke-dasharray="4 8"/>
+  </g>
+  <g fill="#F1FBF6" stroke="#09AF72" stroke-width="2" opacity=".55">
+    <circle cx="112" cy="106" r="5"/><circle cx="240" cy="280" r="5"/><circle cx="128" cy="378" r="5"/><circle cx="280" cy="818" r="5"/><circle cx="1476" cy="92" r="5"/><circle cx="1346" cy="290" r="5"/><circle cx="1472" cy="392" r="5"/><circle cx="1322" cy="842" r="5"/>
+  </g>
+  <g stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".36">
+    <rect x="66" y="228" width="72" height="64" rx="18" fill="#fff"/><path d="M85 244h34v23H99l-10 7v-7h-4zM93 252h18m-18 7h12"/>
+    <rect x="1430" y="300" width="72" height="64" rx="18" fill="#fff"/><path d="M1466 312v9m-13 0h26v25h-26zM1460 330h1m10 0h1m-11 8h10m-25-9v9m40-9v9"/>
+    <rect x="136" y="656" width="72" height="64" rx="18" fill="#fff"/><path d="M154 700v-15h8v15m7 0v-27h8v27m7 0v-20h8v20"/>
+    <rect x="1400" y="724" width="72" height="64" rx="18" fill="#fff"/><path d="M1418 741h36v25h-21l-10 7v-7h-5zM1426 750l6 6 13-12"/>
+  </g>
+</svg>
