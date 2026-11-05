@@ -1852,8 +1852,9 @@ input[type=range] {
 }
 
 .story .bd h3 {
-  font-size: 1.05rem;
-  line-height: 1.3;
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.25;
   color: var(--fg)
 }
 
