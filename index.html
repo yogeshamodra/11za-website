@@ -765,6 +765,9 @@
           <div class="logo-slide">
             <img src="assets/images/greentick/Mercom%20India%20Events.png" alt="Mercom India Events" width="113" height="113" loading="lazy" />
           </div>
+           <div class="logo-slide">
+            <img src="assets/images/greentick/pedalstart.png" alt="pedalstart" width="113" height="113" loading="lazy" />
+          </div>
           <div class="logo-slide">
             <img src="assets/images/greentick/Milk%20Palace.png" alt="Milk Palace" width="113" height="113" loading="lazy" />
           </div>
@@ -817,9 +820,7 @@
           <div class="logo-slide">
             <img src="assets/images/greentick/pedal%20invest.png" alt="pedal invest" width="113" height="113" loading="lazy" />
           </div>
-          <div class="logo-slide">
-            <img src="assets/images/greentick/pedalstart.png" alt="pedalstart" width="113" height="113" loading="lazy" />
-          </div>
+         
           <div class="logo-slide">
             <img src="assets/images/greentick/rogue.png" alt="rogue" width="113" height="113" loading="lazy" />
           </div>
@@ -2027,26 +2028,50 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="proof" style="border-top: 1px solid var(--line)">
   <p class="k">Connects with the tools you already use</p>
 
-  <div class="marq rev">
-    <div class="track" id="integr">
-      <!-- Repeat set 1 -->
-    
-      <img src="assets/images/integrations/ic_woocommerc.png" alt="WooCommerce" class="brand-logo">
-      <img src="assets/images/integrations/shiprocket.png" alt="Shiprocket" class="brand-logo">
-      <img src="assets/images/integrations/pabbly.png" alt="Pabbly" class="brand-logo">
-      <img src="assets/images/integrations/calendly.png" alt="Calendly" class="brand-logo">
-      <img src="assets/images/integrations/ic_tallyprime.png" alt="TallyPrime" class="brand-logo">
+  <div class="integration-slider" id="integr">
 
-      <!-- Repeat set 2 (for smooth infinite marquee looping) -->
-     
+    <div class="brand-item">
       <img src="assets/images/integrations/ic_woocommerc.png" alt="WooCommerce" class="brand-logo">
+    </div>
+
+    <div class="brand-item">
       <img src="assets/images/integrations/shiprocket.png" alt="Shiprocket" class="brand-logo">
+    </div>
+
+    <div class="brand-item">
       <img src="assets/images/integrations/pabbly.png" alt="Pabbly" class="brand-logo">
+    </div>
+
+    <div class="brand-item">
       <img src="assets/images/integrations/calendly.png" alt="Calendly" class="brand-logo">
+    </div>
+
+    <div class="brand-item">
       <img src="assets/images/integrations/ic_tallyprime.png" alt="TallyPrime" class="brand-logo">
     </div>
+    <div class="brand-item">
+      <img src="assets/images/integrations/ic_woocommerc.png" alt="WooCommerce" class="brand-logo">
+    </div>
+
+    <div class="brand-item">
+      <img src="assets/images/integrations/shiprocket.png" alt="Shiprocket" class="brand-logo">
+    </div>
+
+    <div class="brand-item">
+      <img src="assets/images/integrations/pabbly.png" alt="Pabbly" class="brand-logo">
+    </div>
+
+    <div class="brand-item">
+      <img src="assets/images/integrations/calendly.png" alt="Calendly" class="brand-logo">
+    </div>
+
+    <div class="brand-item">
+      <img src="assets/images/integrations/ic_tallyprime.png" alt="TallyPrime" class="brand-logo">
+    </div>
+
   </div>
 </div>
+
 
 
     <section id="faq">
@@ -2610,6 +2635,42 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
   </script>
+  <script>
+$(document).ready(function () {
+
+  $('#integr').slick({
+    slidesToShow: 6,
+    slidesToScroll: 1,
+
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 0,
+    speed: 5000,
+    cssEase: 'linear',
+    arrows: false,
+    dots: false,
+  
+    pauseOnHover: false,
+    pauseOnFocus: false,
+
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2
+        }
+      }
+    ]
+  });
+
+});
+</script>
 </body>
 
 </html>
