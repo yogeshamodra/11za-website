@@ -1257,7 +1257,182 @@
         </div>
       </div>
     </section>
+<style>
+  .ai-demo-card {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+  overflow: hidden;
+}
 
+.ai-demo-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.demo-tag {
+  font-size: 11px;
+  font-weight: 800;
+  color: #079b68;
+  background: #e9fff5;
+  padding: 7px 11px;
+  border-radius: 30px;
+}
+
+.agent-visual {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 25px auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: radial-gradient(circle, #d9fff0, #effff8 65%, #fff);
+}
+
+.agent-glow {
+  position: absolute;
+  width: 155px;
+  height: 155px;
+  border-radius: 50%;
+  background: #09af72;
+  opacity: .12;
+  filter: blur(25px);
+}
+
+.agent-image {
+  position: relative;
+  width: 145px;
+  height: 145px;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.agent-status {
+  position: absolute;
+  bottom: 3px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  z-index: 2;
+}
+
+.agent-status i,
+.live i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #09af72;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.agent-info {
+  text-align: center;
+  margin: 15px 0 22px;
+}
+
+.agent-info h3 {
+  font-size: 21px;
+  margin: 0 0 7px;
+}
+
+.agent-info p {
+  color: var(--slate);
+  font-size: 13px;
+  margin: 0;
+}
+
+.voice-player {
+  background: #f6faf8;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 17px;
+}
+
+.voice-player-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--slate);
+}
+
+.wave {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 12px 0;
+}
+
+.wave i {
+  width: 4px;
+  height: 10px;
+  background: #09af72;
+  border-radius: 10px;
+}
+
+.wave.is-playing i {
+  animation: voiceWave .6s ease-in-out infinite alternate;
+}
+
+.wave.is-playing i:nth-child(3n) {
+  animation-delay: .2s;
+}
+
+.wave.is-playing i:nth-child(3n + 1) {
+  animation-delay: .4s;
+}
+
+@keyframes voiceWave {
+  from { height: 8px; }
+  to { height: 40px; }
+}
+
+.voice-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.voice-controls button {
+  flex: 1;
+  justify-content: center;
+}
+
+.agent-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--slate);
+}
+
+@media(max-width: 480px) {
+  .ai-demo-card {
+    padding: 18px;
+  }
+
+  .agent-visual {
+    width: 160px;
+    height: 160px;
+  }
+
+  .agent-image {
+    width: 125px;
+    height: 125px;
+  }
+}
+</style>
     <section class="ai-band" id="ai-calls">
       <div class="container wrap ai-grid">
         <div>
@@ -1326,8 +1501,67 @@
             <a class="btn btn-green" href="https://calendly.com/engees/schedule-a-demo">Get early access →</a>
           </div>
         </div>
+<div class="call ai-demo-card" aria-label="11za AI voice demo">
 
-        <div class="call" aria-label="Example AI call">
+  <div class="ai-demo-header">
+    <span class="live"><i></i> AI VOICE AGENT</span>
+    <span class="demo-tag">LIVE DEMO</span>
+  </div>
+
+  <div class="agent-visual">
+    <div class="agent-glow"></div>
+
+    <!-- Replace this image with your AI agent image -->
+    <img
+      src="assets/images/ai-voice-agent.png"
+      alt="11za AI Voice Agent"
+      class="agent-image"
+    >
+
+    <span class="agent-status">
+      <i></i> Ready to talk
+    </span>
+  </div>
+
+  <div class="agent-info">
+    <h3>Meet your AI Voice Agent</h3>
+    <p>Natural conversations. Instant lead qualification. 24/7.</p>
+  </div>
+
+  <div class="voice-player">
+    <div class="voice-player-top">
+      <span id="voiceStatus">Listen to AI demo</span>
+      <span id="voiceTime">00:00</span>
+    </div>
+
+    <div class="wave" id="wave">
+      <i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i>
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <div class="voice-controls">
+      <button class="btn btn-green" id="playCall">
+        ▶ Play AI Voice
+      </button>
+
+      <button class="btn btn-outline" id="stopCall">
+        ■ Stop
+      </button>
+    </div>
+  </div>
+
+  <div class="agent-features">
+    <span>✓ Natural AI conversation</span>
+    <span>✓ Lead qualification</span>
+    <span>✓ Appointment booking</span>
+    <span>✓ Call summary</span>
+  </div>
+
+</div>
+        <!-- <div class="call" aria-label="Example AI call">
           <div class="call-top">
             <span class="live"><i></i>AI CALL IN PROGRESS</span><span style="
                   font-size: 0.86rem;
@@ -1389,10 +1623,91 @@
           <div class="outcome">
             <span>✓ Own use</span><span>✓ Budget ₹90 L</span><span>✓ Visit booked · Sat 11 AM</span>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
-<script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const playBtn = document.getElementById("playCall");
+  const stopBtn = document.getElementById("stopCall");
+  const wave = document.getElementById("wave");
+  const status = document.getElementById("voiceStatus");
+  const timer = document.getElementById("voiceTime");
+
+  if (!playBtn || !stopBtn) return;
+
+  const demoText = `
+    Hello! Welcome to 11za AI Calls.
+
+    I am your AI voice assistant.
+    I can call your new leads within seconds,
+    understand their requirements,
+    ask qualifying questions,
+    and book appointments automatically.
+
+    For example, are you looking for a 3 BHK property
+    for your own use or investment?
+
+    Thank you for choosing 11za.
+  `;
+
+  let startTime;
+  let timerInterval;
+
+  function stopVoice() {
+    speechSynthesis.cancel();
+
+    wave.classList.remove("is-playing");
+    status.textContent = "Listen to AI demo";
+
+    clearInterval(timerInterval);
+    timer.textContent = "00:00";
+  }
+
+  function playVoice() {
+    stopVoice();
+
+    const voice = new SpeechSynthesisUtterance(demoText);
+
+    voice.lang = "en-IN";
+    voice.rate = 0.95;
+    voice.pitch = 1;
+
+    voice.onstart = function () {
+      wave.classList.add("is-playing");
+      status.textContent = "AI voice playing";
+
+      startTime = Date.now();
+
+      timerInterval = setInterval(function () {
+        const seconds = Math.floor((Date.now() - startTime) / 1000);
+        timer.textContent =
+          "00:" + String(seconds).padStart(2, "0");
+      }, 1000);
+    };
+
+    voice.onend = function () {
+      wave.classList.remove("is-playing");
+      status.textContent = "Demo completed";
+      clearInterval(timerInterval);
+    };
+
+    voice.onerror = function () {
+      wave.classList.remove("is-playing");
+      status.textContent = "Voice unavailable";
+      clearInterval(timerInterval);
+    };
+
+    speechSynthesis.speak(voice);
+  }
+
+  playBtn.addEventListener("click", playVoice);
+  stopBtn.addEventListener("click", stopVoice);
+
+});
+</script>
+<!-- <script>
 document.addEventListener("DOMContentLoaded", function () {
 
   const playBtn = document.getElementById("playCall");
@@ -1434,7 +1749,7 @@ document.addEventListener("DOMContentLoaded", function () {
   stopBtn.addEventListener("click", stopVoice);
 
 });
-</script>
+</script> -->
     <section id="industries">
       <div class="container wrap">
         <div class="head">
