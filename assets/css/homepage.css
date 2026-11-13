@@ -980,7 +980,8 @@ header.top.scrolled .nav {
   font-weight: 800;
   letter-spacing: .12em;
   color: var(--slate);
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  font-size: 22px;
 }
 
 .logo-slider {
