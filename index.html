@@ -1501,66 +1501,62 @@
             <a class="btn btn-green" href="https://calendly.com/engees/schedule-a-demo">Get early access →</a>
           </div>
         </div>
-<div class="call ai-demo-card" aria-label="11za AI voice demo">
+        <div class="call ai-demo-card" aria-label="11za AI voice demo">
 
-  <div class="ai-demo-header">
-    <span class="live"><i></i> AI VOICE AGENT</span>
-    <span class="demo-tag">LIVE DEMO</span>
-  </div>
+          <div class="ai-demo-header">
+            <span class="live"><i></i> AI VOICE AGENT</span>
+            <span class="demo-tag">LIVE DEMO</span>
+          </div>
 
-  <div class="agent-visual">
-    <div class="agent-glow"></div>
+          <div class="agent-visual">
+            <div class="agent-glow"></div>
 
-    <!-- Replace this image with your AI agent image -->
-    <img
-      src="assets/images/ai-voice-agent.png"
-      alt="11za AI Voice Agent"
-      class="agent-image"
-    >
+            <!-- Replace this image with your AI agent image -->
+            <img
+              src="assets/images/ai-voice-agent.png"
+              alt="11za AI Voice Agent"
+              class="agent-image"
+            >
 
-    <span class="agent-status">
-      <i></i> Ready to talk
-    </span>
-  </div>
+            <span class="agent-status">
+              <i></i> Ready to talk
+            </span>
+          </div>
 
-  <div class="agent-info">
-    <h3>Meet your AI Voice Agent</h3>
-    <p>Natural conversations. Instant lead qualification. 24/7.</p>
-  </div>
+          <div class="agent-info">
+            <h3>Meet your AI Voice Agent</h3>
+            <p>Natural conversations. Instant lead qualification. 24/7.</p>
+          </div>
 
-  <div class="voice-player">
-    <div class="voice-player-top">
-      <span id="voiceStatus">Listen to AI demo</span>
-      <span id="voiceTime">00:00</span>
-    </div>
+          <div class="voice-player">
+            <div class="voice-player-top">
+              <span id="voiceStatus">Listen to AI demo</span>
+              <span id="voiceTime">00:00</span>
+            </div>
 
-    <div class="wave" id="wave">
-      <i></i><i></i><i></i><i></i><i></i>
-      <i></i><i></i><i></i><i></i><i></i>
-      <i></i><i></i><i></i><i></i><i></i>
-      <i></i><i></i><i></i><i></i><i></i>
-      <i></i><i></i><i></i><i></i><i></i>
-    </div>
+            <div class="wave" id="wave">
+              <i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
 
-    <div class="voice-controls">
-      <button class="btn btn-green" id="playCall">
-        ▶ Play AI Voice
-      </button>
-
-      <button class="btn btn-outline" id="stopCall">
-        ■ Stop
-      </button>
-    </div>
-  </div>
-
-  <div class="agent-features">
-    <span>✓ Natural AI conversation</span>
-    <span>✓ Lead qualification</span>
-    <span>✓ Appointment booking</span>
-    <span>✓ Call summary</span>
-  </div>
-
+          <div class="voice-controls">
+  <button class="btn btn-green" id="toggleCall">
+    ▶ Play AI Voice
+  </button>
 </div>
+          </div>
+
+          <div class="agent-features">
+            <span>✓ Natural AI conversation</span>
+            <span>✓ Lead qualification</span>
+            <span>✓ Appointment booking</span>
+            <span>✓ Call summary</span>
+          </div>
+
+        </div>
         <!-- <div class="call" aria-label="Example AI call">
           <div class="call-top">
             <span class="live"><i></i>AI CALL IN PROGRESS</span><span style="
@@ -1629,13 +1625,12 @@
     <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  const playBtn = document.getElementById("playCall");
-  const stopBtn = document.getElementById("stopCall");
+  const toggleBtn = document.getElementById("toggleCall");
   const wave = document.getElementById("wave");
   const status = document.getElementById("voiceStatus");
   const timer = document.getElementById("voiceTime");
 
-  if (!playBtn || !stopBtn) return;
+  if (!toggleBtn) return;
 
   const demoText = `
     Hello! Welcome to 11za AI Calls.
@@ -1652,21 +1647,27 @@ document.addEventListener("DOMContentLoaded", function () {
     Thank you for choosing 11za.
   `;
 
+  let isPlaying = false;
   let startTime;
   let timerInterval;
 
-  function stopVoice() {
+  function resetPlayer() {
     speechSynthesis.cancel();
 
+    isPlaying = false;
+
+    toggleBtn.innerHTML = "▶ Play AI Voice";
     wave.classList.remove("is-playing");
+
     status.textContent = "Listen to AI demo";
+    timer.textContent = "00:00";
 
     clearInterval(timerInterval);
-    timer.textContent = "00:00";
   }
 
   function playVoice() {
-    stopVoice();
+
+    resetPlayer();
 
     const voice = new SpeechSynthesisUtterance(demoText);
 
@@ -1675,35 +1676,50 @@ document.addEventListener("DOMContentLoaded", function () {
     voice.pitch = 1;
 
     voice.onstart = function () {
+
+      isPlaying = true;
+
+      toggleBtn.innerHTML = "■ Stop AI Voice";
       wave.classList.add("is-playing");
+
       status.textContent = "AI voice playing";
 
       startTime = Date.now();
 
       timerInterval = setInterval(function () {
-        const seconds = Math.floor((Date.now() - startTime) / 1000);
+
+        const seconds = Math.floor(
+          (Date.now() - startTime) / 1000
+        );
+
         timer.textContent =
           "00:" + String(seconds).padStart(2, "0");
+
       }, 1000);
     };
 
     voice.onend = function () {
-      wave.classList.remove("is-playing");
+      resetPlayer();
       status.textContent = "Demo completed";
-      clearInterval(timerInterval);
     };
 
     voice.onerror = function () {
-      wave.classList.remove("is-playing");
+      resetPlayer();
       status.textContent = "Voice unavailable";
-      clearInterval(timerInterval);
     };
 
     speechSynthesis.speak(voice);
   }
 
-  playBtn.addEventListener("click", playVoice);
-  stopBtn.addEventListener("click", stopVoice);
+  toggleBtn.addEventListener("click", function () {
+
+    if (isPlaying || speechSynthesis.speaking) {
+      resetPlayer();
+    } else {
+      playVoice();
+    }
+
+  });
 
 });
 </script>
@@ -2954,7 +2970,7 @@ document.addEventListener("DOMContentLoaded", function () {
 $(document).ready(function () {
 
   $('#integr').slick({
-    slidesToShow: 6,
+    slidesToShow: 7,
     slidesToScroll: 1,
 
     infinite: true,
