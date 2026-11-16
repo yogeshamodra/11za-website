@@ -2319,47 +2319,78 @@ document.addEventListener("DOMContentLoaded", function () {
 <div class="proof" style="border-top: 1px solid var(--line)">
   <p class="k">Connects with the tools you already use</p>
 
-  <div class="integration-slider" id="integr">
+  <!-- REVIEW MOCKUP: hub-and-spoke integrations. Text cards (Zapier, Shopify, HubSpot) are placeholders until real logos are received -->
+  <style>
+    .integ-hub { position: relative; width: min(1000px, calc(100% - 32px)); margin: 10px auto 0; aspect-ratio: 1000 / 520; }
+    .integ-hub svg.lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .integ-hub .ln { fill: none; stroke: #BFE3D0; stroke-width: 1.5; }
+    .integ-hub .flow { fill: none; stroke: #25D366; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 8 92; animation: integFlow 2.8s linear infinite; }
+    @keyframes integFlow { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+    .integ-card {
+      position: absolute; width: 11%; aspect-ratio: 1; box-sizing: border-box;
+      display: flex; align-items: center; justify-content: center; padding: 0; overflow: hidden;
+      background: #fff; border: 1px solid #D5EDE0; border-radius: 16px;
+      box-shadow: 0 0 0 6px #F2FAF6, 0 6px 18px rgba(18,140,126,.10);
+      font-weight: 800; color: #2E3757; font-size: clamp(.7rem, 1.5vw, 1.05rem); text-align: center;
+    }
+    .integ-card img { width: 80%; height: 80%; object-fit: contain; }
+    .integ-card.hub { width: 17%; left: 41.5%; top: 33.65%; border-radius: 50%; box-shadow: 0 0 0 10px #F2FAF6, 0 10px 30px rgba(18,140,126,.18); }
+    .integ-card.hub [data-logo] { display: block; width: 70%; }
+    /* hub flashes each time the green pulses reach it (same 2.8s cycle as .flow) */
+    .integ-card.hub { animation: hubBlink 2.8s ease-out infinite; }
+    @keyframes hubBlink {
+      0%, 80% { border-color: #D5EDE0; box-shadow: 0 0 0 10px #F2FAF6, 0 10px 30px rgba(18,140,126,.18); }
+      90% { border-color: #25D366; box-shadow: 0 0 0 14px rgba(37,211,102,.28), 0 0 36px rgba(37,211,102,.65); }
+      100% { border-color: #D5EDE0; box-shadow: 0 0 0 10px #F2FAF6, 0 10px 30px rgba(18,140,126,.18); }
+    }
+    @media (prefers-reduced-motion: reduce) { .integ-hub .flow, .integ-card.hub { animation: none; } }
+    /* mobile: keep the same desktop layout, just scaled down */
+    @media (max-width: 767px) {
+      .integ-hub { width: calc(100% - 16px); }
+      .integ-card { border-radius: 8px; font-size: .55rem; box-shadow: 0 0 0 3px #F2FAF6; }
+      .integ-card.hub { border-radius: 50%; box-shadow: 0 0 0 5px #F2FAF6; }
+      .integ-hub .ln { stroke-width: 1; }
+      .integ-hub .flow { stroke-width: 2; }
+    }
+  </style>
 
-    <div class="brand-item">
-      <img src="assets/images/integrations/ic_woocommerc.png" alt="WooCommerce" class="brand-logo">
-    </div>
+  <div class="integ-hub">
+    <svg class="lines" viewBox="0 0 1000 520" preserveAspectRatio="none" aria-hidden="true">
+      <!-- left 3 -->
+      <g>
+        <path class="ln" pathLength="100" d="M195 90 H300 L400 235 H440"/><path class="flow" pathLength="100" d="M195 90 H300 L400 235 H440"/>
+        <path class="ln" pathLength="100" d="M195 260 H440"/><path class="flow" pathLength="100" d="M195 260 H440"/>
+        <path class="ln" pathLength="100" d="M195 430 H300 L400 285 H440"/><path class="flow" pathLength="100" d="M195 430 H300 L400 285 H440"/>
+      </g>
+      <!-- right 3 (mirrored) -->
+      <g>
+        <path class="ln" pathLength="100" d="M805 90 H700 L600 235 H560"/><path class="flow" pathLength="100" d="M805 90 H700 L600 235 H560"/>
+        <path class="ln" pathLength="100" d="M805 260 H560"/><path class="flow" pathLength="100" d="M805 260 H560"/>
+        <path class="ln" pathLength="100" d="M805 430 H700 L600 285 H560"/><path class="flow" pathLength="100" d="M805 430 H700 L600 285 H560"/>
+      </g>
+      <!-- top and bottom -->
+      <g>
+        <path class="ln" pathLength="100" d="M500 115 V190"/><path class="flow" pathLength="100" d="M500 115 V190"/>
+        <path class="ln" pathLength="100" d="M500 405 V330"/><path class="flow" pathLength="100" d="M500 405 V330"/>
+      </g>
+    </svg>
 
-    <div class="brand-item">
-      <img src="assets/images/integrations/shiprocket.png" alt="Shiprocket" class="brand-logo">
-    </div>
+    <!-- left: 3 cards -->
+    <div class="integ-card" style="left:8.5%;  top:6.73%"><img src="assets/images/integrations/shiprocket.png" alt="Shiprocket"></div>
+    <div class="integ-card" style="left:8.5%;  top:39.42%"><img src="assets/images/integrations/ic_tallyprime.png" alt="TallyPrime"></div>
+    <div class="integ-card" style="left:8.5%;  top:72.12%"><img src="assets/images/integrations/calendly.png" alt="Calendly"></div>
 
-    <div class="brand-item">
-      <img src="assets/images/integrations/pabbly.png" alt="Pabbly" class="brand-logo">
-    </div>
+    <!-- top + bottom -->
+    <div class="integ-card" style="left:44.5%; top:0.96%"><img src="assets/images/integrations/ic_woocommerc.png" alt="WooCommerce"></div>
+    <div class="integ-card" style="left:44.5%; top:77.88%"><img src="assets/images/integrations/razorpay.png" alt="Razorpay"></div>
 
-    <div class="brand-item">
-      <img src="assets/images/integrations/calendly.png" alt="Calendly" class="brand-logo">
-    </div>
+    <!-- centre: 11za (round) -->
+    <div class="integ-card hub"><span data-logo></span></div>
 
-    <div class="brand-item">
-      <img src="assets/images/integrations/ic_tallyprime.png" alt="TallyPrime" class="brand-logo">
-    </div>
-    <div class="brand-item">
-      <img src="assets/images/integrations/ic_woocommerc.png" alt="WooCommerce" class="brand-logo">
-    </div>
-
-    <div class="brand-item">
-      <img src="assets/images/integrations/shiprocket.png" alt="Shiprocket" class="brand-logo">
-    </div>
-
-    <div class="brand-item">
-      <img src="assets/images/integrations/pabbly.png" alt="Pabbly" class="brand-logo">
-    </div>
-
-    <div class="brand-item">
-      <img src="assets/images/integrations/calendly.png" alt="Calendly" class="brand-logo">
-    </div>
-
-    <div class="brand-item">
-      <img src="assets/images/integrations/ic_tallyprime.png" alt="TallyPrime" class="brand-logo">
-    </div>
-
+    <!-- right: 3 cards -->
+    <div class="integ-card" style="left:80.5%; top:6.73%"><img src="assets/images/integrations/pabbly.png" alt="Pabbly"></div>
+    <div class="integ-card" style="left:80.5%; top:39.42%"><img src="assets/images/integrations/shopify.png" alt="Shopify"></div>
+    <div class="integ-card" style="left:80.5%; top:72.12%"><img src="assets/images/integrations/google-sheet.png" alt="Google Sheets"></div>
   </div>
 </div>
 
