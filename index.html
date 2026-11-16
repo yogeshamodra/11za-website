@@ -265,7 +265,7 @@
         <span class="badge"><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff"
               stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M5 12.5l4.5 4.5L19 7.5" />
-            </svg></i>Official WhatsApp Business API · Meta Business Partner</span>
+            </svg></i>Official WhatsApp Business API <img src="assets/images/meta.png" alt="" width="24" height="24"></span>
         <h1>
           One WhatsApp number that
           <span class="rot" aria-live="polite"><span id="rotText">puts your whole team on one inbox.</span><span
@@ -1632,93 +1632,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!toggleBtn) return;
 
-  const demoText = `
-    Hello! Welcome to 11za AI Calls.
+  // Put your mp3 at this path (or change the path here)
+  const AUDIO_SRC = "assets/audio/ai-voice-demo.mp3";
 
-    I am your AI voice assistant.
-    I can call your new leads within seconds,
-    understand their requirements,
-    ask qualifying questions,
-    and book appointments automatically.
+  const audio = new Audio(AUDIO_SRC);
+  audio.preload = "metadata";
 
-    For example, are you looking for a 3 BHK property
-    for your own use or investment?
+  function fmt(t) {
+    const m = Math.floor(t / 60);
+    const s = Math.floor(t % 60);
+    return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+  }
 
-    Thank you for choosing 11za.
-  `;
-
-  let isPlaying = false;
-  let startTime;
-  let timerInterval;
-
-  function resetPlayer() {
-    speechSynthesis.cancel();
-
-    isPlaying = false;
-
+  function setIdle(msg) {
     toggleBtn.innerHTML = "▶ Play AI Voice";
     wave.classList.remove("is-playing");
-
-    status.textContent = "Listen to AI demo";
+    status.textContent = msg || "Listen to AI demo";
     timer.textContent = "00:00";
-
-    clearInterval(timerInterval);
   }
 
-  function playVoice() {
+  audio.addEventListener("play", function () {
+    toggleBtn.innerHTML = "■ Stop AI Voice";
+    wave.classList.add("is-playing");
+    status.textContent = "AI voice playing";
+  });
 
-    resetPlayer();
+  audio.addEventListener("timeupdate", function () {
+    timer.textContent = fmt(audio.currentTime);
+  });
 
-    const voice = new SpeechSynthesisUtterance(demoText);
+  audio.addEventListener("ended", function () {
+    setIdle("Demo completed");
+  });
 
-    voice.lang = "en-IN";
-    voice.rate = 0.95;
-    voice.pitch = 1;
-
-    voice.onstart = function () {
-
-      isPlaying = true;
-
-      toggleBtn.innerHTML = "■ Stop AI Voice";
-      wave.classList.add("is-playing");
-
-      status.textContent = "AI voice playing";
-
-      startTime = Date.now();
-
-      timerInterval = setInterval(function () {
-
-        const seconds = Math.floor(
-          (Date.now() - startTime) / 1000
-        );
-
-        timer.textContent =
-          "00:" + String(seconds).padStart(2, "0");
-
-      }, 1000);
-    };
-
-    voice.onend = function () {
-      resetPlayer();
-      status.textContent = "Demo completed";
-    };
-
-    voice.onerror = function () {
-      resetPlayer();
-      status.textContent = "Voice unavailable";
-    };
-
-    speechSynthesis.speak(voice);
-  }
+  audio.addEventListener("error", function () {
+    setIdle("Voice unavailable");
+  });
 
   toggleBtn.addEventListener("click", function () {
-
-    if (isPlaying || speechSynthesis.speaking) {
-      resetPlayer();
+    if (!audio.paused) {
+      audio.pause();
+      audio.currentTime = 0;
+      setIdle();
     } else {
-      playVoice();
+      audio.play().catch(function () {
+        setIdle("Voice unavailable");
+      });
     }
-
   });
 
 });
@@ -2466,7 +2426,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="container wrap">
       <div class="final">
         <div style="position: relative; z-index: 1">
-          <h2>Put your whole business on <em>one WhatsApp number.</em></h2>
+          <h2>Put your whole business on <em>1 WhatsApp number.</em></h2>
           <p>
             See 11za with your own use case in a 1-on-1 demo. Manage chats on
             the go with the 11za app for Android and iPhone.
@@ -2562,13 +2522,13 @@ document.addEventListener("DOMContentLoaded", function () {
             href="structure.html">Website plan</a>
         </div>
       </div>
-      <div class="cities" id="cities">
+      <!-- <div class="cities" id="cities">
         <b style="color: var(--navy)">WhatsApp API in:</b>
         <a href="structure.html#bp-city">Surat</a><a href="structure.html#bp-city">Ahmedabad</a><a
           href="structure.html#bp-city">Mumbai</a><a href="structure.html#bp-city">Pune</a><a
           href="structure.html#bp-city">Bangalore</a><a href="structure.html#bp-city">Delhi NCR</a><a
           href="structure.html#bp-city">Jaipur</a><a href="structure.html#bp-city">Hyderabad</a>
-      </div>
+      </div> -->
       <div class="legal">
         <span>© 2022 – 2026 Engees Communications Private Limited · Made in
           Surat, India</span><span><a href="https://11za.com/terms-conditions/">Terms</a> ·
@@ -2898,17 +2858,27 @@ document.addEventListener("DOMContentLoaded", function () {
     /* customer logo slider */
     (() => {
       const box = document.getElementById("logos");
-      const track = document.createElement("div");
-      track.className = "logo-track";
-      const slides = [...box.children];
-      slides.forEach((s) => track.appendChild(s));
-      slides.forEach((s) => {
-        const c = s.cloneNode(true);
-        c.setAttribute("aria-hidden", "true");
-        track.appendChild(c);
-      });
-      box.appendChild(track);
-      track.style.setProperty("--n", slides.length);
+      const all = [...box.children];
+      const ROWS = 3; // row 1: left→right, row 2: right→left, row 3: left→right
+      const perRow = Math.ceil(all.length / ROWS);
+      box.classList.add("logo-rows");
+      for (let r = 0; r < ROWS; r++) {
+        const slides = all.slice(r * perRow, (r + 1) * perRow);
+        if (!slides.length) continue;
+        const row = document.createElement("div");
+        row.className = "logo-row" + (r % 2 === 0 ? " to-right" : " to-left");
+        const track = document.createElement("div");
+        track.className = "logo-track";
+        slides.forEach((s) => track.appendChild(s));
+        slides.forEach((s) => {
+          const c = s.cloneNode(true);
+          c.setAttribute("aria-hidden", "true");
+          track.appendChild(c);
+        });
+        row.appendChild(track);
+        box.appendChild(row);
+        track.style.setProperty("--n", slides.length);
+      }
     })();
 
     /* sticky header */
