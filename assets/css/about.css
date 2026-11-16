@@ -1,4 +1,19 @@
-/* About page. Uses the shared theme surfaces (za-section / za-soft / za-dark / za-console / za-card) from whatsapp-api-theme.css. */
+/* About page styles, including the theme surfaces it uses (za-section / za-soft / za-dark / za-console / za-card / za-eyebrow). */
+/* ---- theme surfaces ---- */
+:root{--za-navy:#0D163F;--za-green:#09AF72;--za-deep:#0A8A66;--za-mint:#E5FFF2;--za-light:#F0FAF4;--za-soft:#E4F5EC;--za-dark:#063E32;--za-border:#C5E3D3;--za-muted:#545C75}
+.za-section{position:relative;isolation:isolate;padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--za-border);background-color:var(--za-light);color:var(--za-navy);background-image:radial-gradient(ellipse at 12% 20%,rgba(37,211,102,.12),transparent 48%),linear-gradient(rgba(10,138,102,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(10,138,102,.055) 1px,transparent 1px);background-size:auto,48px 48px,48px 48px}
+.za-section::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("../whatsapp-api-pattern.svg") center / 640px 480px repeat;opacity:.58;mask-image:linear-gradient(90deg,#000,rgba(0,0,0,.3) 40%,rgba(0,0,0,.3) 60%,#000)}
+.za-soft{background-color:var(--za-soft);background-image:radial-gradient(ellipse at 100% 10%,rgba(37,211,102,.14),transparent 55%),linear-gradient(120deg,rgba(255,255,255,.8),transparent 65%);background-size:auto}
+.za-dark,.za-console{background-color:var(--za-dark);color:#fff;background-image:radial-gradient(ellipse at 100% 0%,rgba(37,211,102,.2),transparent 65%),linear-gradient(rgba(188,255,218,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(188,255,218,.05) 1px,transparent 1px);background-size:auto,48px 48px,48px 48px}
+.za-console{background-color:var(--za-navy)}
+.za-dark::before,.za-console::before{opacity:.65;mask-image:none}
+.za-card{padding:24px;border:1px solid #D0E5D9;border-top:3px solid #8CCFAC;border-radius:20px;background:linear-gradient(145deg,#fff 65%,#F2FBF6);color:var(--za-navy);box-shadow:0 10px 30px rgba(7,83,61,.07)}
+.za-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 12px;border:1px solid #B6DEC9;border-radius:8px;background:#E1F5E9;color:var(--za-deep);font-size:.76rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.za-eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--za-green);box-shadow:0 0 0 4px rgba(9,175,114,.1)}
+.za-dark .za-eyebrow,.za-console .za-eyebrow{color:#A3F4C8;background:rgba(9,175,114,.15);border-color:rgba(144,236,185,.3)}
+@media(max-width:760px){.za-section::before{background-size:480px 360px;opacity:.36}.za-dark::before,.za-console::before{opacity:.55}.za-card{box-shadow:0 6px 20px rgba(7,83,61,.05)}}
+
+/* ---- about page ---- */
 .about .wrap{position:relative}
 .about h1{font-size:clamp(2.4rem,6vw,4.4rem); font-weight:800; letter-spacing:-.035em; line-height:1.04; margin:18px auto 0; max-width:16ch}
 .about h2{font-size:clamp(1.9rem,4vw,2.9rem)}
@@ -118,6 +133,5 @@ main.about>section.ab-stats{padding-block:clamp(40px,6vw,64px)}
 /* The homepage stylesheet restyles every main > section; re-apply the theme surfaces with higher specificity. */
 main.about>section.za-section{position:relative;isolation:isolate;padding-block:clamp(64px,9vw,112px);border-top:1px solid var(--za-border);background-color:var(--za-light);color:var(--za-navy);background-image:radial-gradient(ellipse at 12% 20%,rgba(37,211,102,.12),transparent 48%),linear-gradient(rgba(10,138,102,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(10,138,102,.055) 1px,transparent 1px);background-size:auto,48px 48px,48px 48px}
 main.about>section.za-soft{background-color:var(--za-soft);background-image:radial-gradient(ellipse at 100% 10%,rgba(37,211,102,.14),transparent 55%),linear-gradient(120deg,rgba(255,255,255,.8),transparent 65%);background-size:auto}
-main.about>section.za-hero{background-color:#F1FBF6;background-image:url("../crm-network.svg"),radial-gradient(ellipse at 50% 12%,#fff,rgba(255,255,255,.94) 24%,transparent 62%),radial-gradient(ellipse at 0% 38%,rgba(37,211,102,.13),transparent 48%);background-size:1600px 1000px,auto,auto;background-position:center top;background-repeat:repeat-y,no-repeat,no-repeat}
 main.about>section.za-dark,main.about>section.za-console{background-color:var(--za-dark);color:#fff;background-image:radial-gradient(ellipse at 100% 0%,rgba(37,211,102,.2),transparent 65%),linear-gradient(rgba(188,255,218,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(188,255,218,.05) 1px,transparent 1px);background-size:auto,48px 48px,48px 48px}
 main.about>section.za-console{background-color:var(--za-navy)}
