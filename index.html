@@ -723,7 +723,9 @@
   </div>
 </div> -->
     <div class="proof">
-      <p class="k d-flex align-items-center justify-content-center gap-2"><img src="assets/images/wapp_iocn.svg">Blue-tick verified on WhatsApp with 11za<img class="w-30 sm-hidden" src="assets/images/ic_badge.svg" alt=""></p>
+      <div class="container wrap">
+        <p class="k d-flex align-items-center justify-content-center gap-2"><img src="assets/images/wapp_iocn.svg">Blue-tick verified on WhatsApp with 11za<img class="w-30 sm-hidden" src="assets/images/ic_badge.svg" alt=""></p>
+      </div>
       <div class="container wrap">
         <div class="logo-slider" id="logos">
           <div class="logo-slide">
@@ -2317,7 +2319,10 @@ document.addEventListener("DOMContentLoaded", function () {
 </style>
    
 <div class="proof" style="border-top: 1px solid var(--line)">
-  <p class="k">Integrate with your favorite tools, 50+ integrations available</p>
+  <div class="container wrap">
+
+    <p class="k">Integrate with your favorite tools, 50+ integrations available</p>
+  </div>
 
   <!-- REVIEW MOCKUP: hub-and-spoke integrations. Text cards (Zapier, Shopify, HubSpot) are placeholders until real logos are received -->
   <style>
@@ -2346,11 +2351,23 @@ document.addEventListener("DOMContentLoaded", function () {
     @media (prefers-reduced-motion: reduce) { .integ-hub .flow, .integ-card.hub { animation: none; } }
     /* mobile: keep the same desktop layout, just scaled down */
     @media (max-width: 767px) {
-      .integ-hub { width: calc(100% - 16px); }
-      .integ-card { border-radius: 8px; font-size: .55rem; box-shadow: 0 0 0 3px #F2FAF6; }
-      .integ-card.hub { border-radius: 50%; box-shadow: 0 0 0 5px #F2FAF6; }
-      .integ-hub .ln { stroke-width: 1; }
-      .integ-hub .flow { stroke-width: 2; }
+      .integ-hub { width: 100%; margin: 28px auto; }
+      .integ-card { border-radius: 8px; font-size: .55rem; box-shadow: 0 0 0 3px #F2FAF6; transform: scale(1.35); }
+      .integ-card img { width: 92%; height: 92%; }
+      /* pull side cards toward the centre to shrink the gap to the 11za circle */
+      .integ-card[style*="left:8.5%"]  { transform: translateX(40%) scale(1.35); }
+      .integ-card[style*="left:80.5%"] { transform: translateX(-40%) scale(1.35); }
+      /* push top/bottom cards away from the circle so they never touch its ring */
+      .integ-card[style*="top:0.96%"]  { transform: translateY(-14%) scale(1.35); }
+      .integ-card[style*="top:77.88%"] { transform: translateY(14%) scale(1.35); }
+      .integ-card.hub { border-radius: 50%; box-shadow: 0 0 0 4px #F2FAF6; transform: scale(1.05); animation-name: hubBlinkSm; }
+      @keyframes hubBlinkSm {
+        0%, 80% { border-color: #D5EDE0; box-shadow: 0 0 0 4px #F2FAF6; }
+        90% { border-color: #25D366; box-shadow: 0 0 0 6px rgba(37,211,102,.28), 0 0 20px rgba(37,211,102,.65); }
+        100% { border-color: #D5EDE0; box-shadow: 0 0 0 4px #F2FAF6; }
+      }
+      .integ-hub .ln { stroke: #8FD3B1; stroke-width: 1.5; }
+      .integ-hub .flow { stroke-width: 2.5; }
     }
   </style>
 
