@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (!toggleBtn) return;
 
   // Put your mp3 at this path (or change the path here)
-  const AUDIO_SRC = "assets/audio/ai-voice-demo.mp3";
+  const AUDIO_SRC = "assets/audio/ai-voice-demo.wav";
 
   const audio = new Audio(AUDIO_SRC);
   audio.preload = "metadata";

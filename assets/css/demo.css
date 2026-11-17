@@ -1,0 +1,284 @@
+/* Book a demo page. Builds on homepage.css (tokens, buttons, header, footer). */
+
+/* ---------- hero: green mesh surface, copy left, form card right ---------- */
+.demo-hero {
+  position: relative;
+  isolation: isolate;
+  padding-block: clamp(48px, 7vw, 96px);
+  background-color: #F1FBF6;
+  background-image:
+    radial-gradient(ellipse at 12% 18%, rgba(37, 211, 102, .14), transparent 50%),
+    radial-gradient(ellipse at 100% 80%, rgba(9, 175, 114, .14), transparent 48%),
+    linear-gradient(rgba(10, 138, 102, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 138, 102, .05) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+  border-bottom: 1px solid #D4EADF;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.demo-copy {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.demo-copy h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1.06;
+}
+
+.demo-copy .lede { margin: 0; }
+
+.demo-points {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.demo-points li {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.demo-points i {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--green);
+  color: #fff;
+  font-style: normal;
+  font-weight: 800;
+  font-size: .86rem;
+  display: grid;
+  place-items: center;
+}
+
+.demo-points b { display: block; }
+.demo-points span { color: var(--muted); font-size: .95rem; }
+
+.demo-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--deep);
+}
+
+.demo-trust li::before {
+  content: "✓ ";
+}
+
+/* ---------- form card ---------- */
+.demo-card {
+  background: #fff;
+  border: 1px solid #D0E5D9;
+  border-top: 3px solid #8CCFAC;
+  border-radius: 22px;
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: 0 24px 60px rgba(7, 83, 61, .12), 0 0 0 7px rgba(255, 255, 255, .55);
+}
+
+.demo-card h2 {
+  margin: 0 0 4px;
+  font-size: 1.35rem;
+}
+
+.demo-card .sub {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: .94rem;
+}
+
+.demo-steps {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.demo-steps span {
+  flex: 1;
+  padding-top: 8px;
+  border-top: 3px solid var(--line);
+}
+
+.demo-steps span.on {
+  color: var(--deep);
+  border-top-color: var(--green);
+}
+
+.demo-form {
+  display: grid;
+  gap: 16px;
+}
+
+.demo-form .row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.demo-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+.demo-form input,
+.demo-form select {
+  font: inherit;
+  font-weight: 500;
+  color: var(--navy);
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #CFE3DA;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.demo-form input:focus,
+.demo-form select:focus {
+  outline: none;
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(9, 175, 114, .15);
+}
+
+.demo-form [aria-invalid="true"] {
+  border-color: var(--red);
+}
+
+.demo-form .err {
+  color: var(--red);
+  font-size: .8rem;
+  font-weight: 600;
+  min-height: 0;
+}
+
+.demo-form .btn { width: 100%; }
+
+.demo-note {
+  margin: 4px 0 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: .82rem;
+}
+
+/* ---------- step 2: calendar ---------- */
+.demo-cal[hidden],
+.demo-form[hidden] { display: none; }
+
+.demo-cal iframe {
+  display: block;
+  width: 100%;
+  height: 680px;
+  border: 0;
+  border-radius: 12px;
+}
+
+.demo-cal .back {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--deep);
+  cursor: pointer;
+}
+
+.demo-cal .alt {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+.demo-cal .alt a { color: var(--deep); font-weight: 700; }
+
+/* ---------- what happens on the call ---------- */
+.demo-call {
+  padding-block: clamp(56px, 8vw, 100px);
+}
+
+.demo-head {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.demo-head h2 {
+  margin: 14px 0 0;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  letter-spacing: -.03em;
+}
+
+.demo-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.demo-step {
+  padding: 26px;
+  background: #fff;
+  border: 1px solid #D0E5D9;
+  border-top: 3px solid #8CCFAC;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(7, 83, 61, .06);
+}
+
+.demo-step .n {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--deep);
+  font-weight: 800;
+}
+
+.demo-step h3 { margin: 14px 0 6px; font-size: 1.15rem; }
+.demo-step p { margin: 0; color: var(--muted); font-size: .96rem; }
+
+.demo-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.demo-cta p { color: var(--muted); margin: 0 0 14px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .demo-grid { grid-template-columns: 1fr; }
+  .demo-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .demo-form .row2 { grid-template-columns: 1fr; }
+  .demo-cal iframe { height: 640px; }
+}
