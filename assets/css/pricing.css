@@ -1,0 +1,136 @@
+/* Pricing page. Builds on homepage.css (.plans, .plan, .price, .addons, .incl, .cmp, .faq, .final). */
+
+/* ---------- hero ---------- */
+.pricing-hero {
+  padding-block: clamp(44px, 6vw, 84px) clamp(24px, 3vw, 40px);
+  text-align: center;
+  background-color: #F1FBF6;
+  background-image:
+    radial-gradient(ellipse at 50% 0%, #fff 0%, rgba(255, 255, 255, .9) 30%, transparent 65%),
+    radial-gradient(ellipse at 8% 40%, rgba(37, 211, 102, .14), transparent 50%),
+    radial-gradient(ellipse at 100% 60%, rgba(9, 175, 114, .14), transparent 48%),
+    linear-gradient(rgba(10, 138, 102, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(10, 138, 102, .05) 1px, transparent 1px);
+  background-size: auto, auto, auto, 48px 48px, 48px 48px;
+}
+
+.pricing-hero h1 {
+  margin: 14px 0 0;
+  font-size: clamp(2.4rem, 5.6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1.06;
+}
+
+.pricing-hero .lede {
+  margin: 18px auto 0;
+}
+
+/* ---------- plans ---------- */
+.pricing-plans {
+  padding-block: 24px clamp(48px, 7vw, 88px);
+  background: linear-gradient(180deg, #F1FBF6, #fff 45%);
+}
+
+.pricing-plans .plans {
+  padding-top: 18px; /* room for the MOST POPULAR tag */
+}
+
+.plan .eq {
+  margin: -6px 0 0;
+  color: var(--deep);
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+.plan .eq .save {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--mint);
+  color: var(--deep);
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+/* ---------- Meta charges ---------- */
+.pricing-meta {
+  padding-block: clamp(48px, 7vw, 88px);
+  background: var(--soft);
+  border-block: 1px solid #D4EADF;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 760px;
+  margin: 32px auto 0;
+}
+
+.meta-card {
+  background: #fff;
+  border: 1px solid #D0E5D9;
+  border-top: 3px solid #8CCFAC;
+  border-radius: 20px;
+  padding: 26px;
+  box-shadow: 0 10px 30px rgba(7, 83, 61, .06);
+}
+
+.meta-card small {
+  color: var(--slate);
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-size: .74rem;
+}
+
+.meta-card b {
+  display: block;
+  margin: 8px 0;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.meta-card b span {
+  color: var(--muted);
+  font-size: .9rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.meta-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.meta-cta {
+  margin-top: 22px;
+  text-align: center;
+}
+
+/* ---------- compare / faq / cta spacing ---------- */
+.pricing-compare,
+.pricing-faq {
+  padding-block: clamp(48px, 7vw, 88px);
+}
+
+.pricing-faq {
+  background: var(--soft);
+  border-block: 1px solid #D4EADF;
+}
+
+.pricing-cta {
+  padding-block: clamp(32px, 5vw, 64px) clamp(56px, 8vw, 96px);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 600px) {
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
