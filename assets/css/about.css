@@ -105,7 +105,7 @@ main.about>section.ab-stats{padding-block:clamp(40px,6vw,64px)}
 @media (max-width:760px){.ab-founder{grid-template-columns:1fr}}
 
 /* team */
-.ab-team{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; max-width:860px; margin-inline:auto}
+.ab-team{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; max-width:860px}
 .member{margin:0; background:#fff; border:1px solid #D0E5D9; border-radius:22px; overflow:hidden; text-align:center; box-shadow:0 10px 30px rgba(7,83,61,.07); transition:transform .25s ease}
 .member:hover{transform:translateY(-4px)}
 .member img{display:block; width:100%; aspect-ratio:210/240; object-fit:cover; object-position:top; background:var(--mint)}
