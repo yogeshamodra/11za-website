@@ -3218,3 +3218,7 @@ a {
   .integ-hub .ln { stroke: #8FD3B1; stroke-width: 1.5; }
   .integ-hub .flow { stroke-width: 2.5; }
 }
+
+/* single-column dropdown panels (Resources, Company) */
+.dd .panel.one { width: 300px; grid-template-columns: 1fr }
+.dd .panel.right { left: auto; right: -12px }
