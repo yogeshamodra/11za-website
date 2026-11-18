@@ -312,7 +312,7 @@ header.top.scrolled .nav {
 
 .links>a:hover,
 .dd>button:hover,
-.dd:focus-within>button {
+.dd:has(:focus-visible)>button {
   color: var(--navy);
   background: var(--soft)
 }
@@ -325,6 +325,10 @@ header.top.scrolled .nav {
 .dd {
   position: relative
 }
+
+/* a mouse click gives no highlight and cannot leave a menu stuck open; keyboard focus still opens it */
+.dd>button { -webkit-tap-highlight-color: transparent }
+.dd>button:focus:not(:focus-visible) { outline: none }
 
 .dd .panel {
   position: absolute;
@@ -344,7 +348,7 @@ header.top.scrolled .nav {
 }
 
 .dd:hover .panel,
-.dd:focus-within .panel {
+.dd:has(:focus-visible) .panel {
   opacity: 1;
   visibility: visible;
   transform: none
