@@ -1,0 +1,17 @@
+/* Legal pages (privacy policy, terms). Loaded after homepage.css and product.css. */
+.lg-wrap { display: block; }
+.lg-toc { position: sticky; top: 90px; max-height: calc(100vh - 110px); overflow: auto; background: #F6FBF8; border: 1px solid #D0E5D9; border-radius: 18px; padding: 18px 18px 18px 14px; font-size: .88rem; }
+.lg-toc b { display: block; margin: 0 0 8px 6px; color: var(--navy); }
+.lg-toc ol { margin: 0; padding-left: 26px; display: grid; gap: 2px; }
+.lg-toc a { color: var(--muted); text-decoration: none; display: block; padding: 3px 0; }
+.lg-toc a:hover { color: var(--green); }
+.lg-body { max-width: none; margin: 0; line-height: 1.75; color: #2B3556; }
+.lg-body h2 { font-size: 1.6rem; color: var(--navy); margin: 2.2rem 0 .7rem; padding-top: .4rem; scroll-margin-top: 90px; }
+.lg-body p, .lg-body li { font-size: 1.15rem; }
+.lg-body ul, .lg-body ol { padding-left: 1.3rem; margin: .5rem 0 1rem; }
+.lg-body a { color: var(--deep, #0A8A66); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.lg-table { overflow-x: auto; margin: 1rem 0; border: 1px solid #D0E5D9; border-radius: 14px; }
+.lg-table table { width: 100%; border-collapse: collapse; font-size: 1.05rem; }
+.lg-table td, .lg-table th { border: 1px solid #E3EFE9; padding: 10px 12px; vertical-align: top; }
+.lg-table tr:first-child td { background: #F1FBF6; font-weight: 700; color: var(--navy); }
+@media (max-width: 900px) { .lg-wrap { grid-template-columns: 1fr; } .lg-toc { position: static; max-height: none; } }

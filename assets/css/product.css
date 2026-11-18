@@ -26,7 +26,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top left;
   display: block;
 }
 .pshot-ph { display: none; }
@@ -468,3 +467,7 @@
 .pshot.phone { aspect-ratio: auto; min-height: 0; background: none; border: 0; box-shadow: none; overflow: visible; display: grid; place-items: center; }
 .pshot.phone img { position: static; width: auto; height: auto; max-width: 100%; max-height: 520px; object-fit: contain; filter: drop-shadow(0 24px 40px rgba(7, 83, 61, .18)); }
 .pshot.phone.missing { aspect-ratio: 4 / 3; border: 1px solid #C1E0D2; border-radius: 18px; overflow: hidden; position: relative; }
+
+/* wide screenshot shown in full (no cropping) */
+.pshot.fit { aspect-ratio: 16 / 9; min-height: 0; background: #fff; }
+.pshot.fit img { object-fit: contain; object-position: center; }
