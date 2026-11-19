@@ -3263,3 +3263,17 @@ header.top.scrolled .nav { padding-block: 20px; } /* same height when scrolled, 
   .links>a,.dd>button{padding-inline:8px;font-size:.9rem}
   .nav-cta .btn{padding:10px 13px}
 }
+
+/* header: Log in / Sign up styled as menu links, Book a demo stays the button */
+.nav-cta{gap:2px}
+.nav-cta .login{font-weight:600;font-size:.95rem;color:var(--muted);padding:9px 12px;border-radius:999px;transition:color .15s,background .15s}
+.nav-cta .login:hover{color:var(--navy);background:var(--soft)}
+.nav-cta .btn{margin-left:10px}
+@media (min-width:1061px) and (max-width:1240px){
+  .nav-cta .login{padding:9px 8px;font-size:.9rem}
+  .nav-cta .btn{margin-left:6px}
+}
+
+/* Log in / Sign up now sit inside the main menu group */
+.nav-cta .btn{margin-left:0}
+@media (min-width:1061px) and (max-width:1240px){.nav-cta .btn{margin-left:0}}
