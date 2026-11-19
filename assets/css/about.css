@@ -104,14 +104,22 @@ main.about>section.ab-stats{padding-block:clamp(40px,6vw,64px)}
 .ab-founder .who span{color:var(--mist); font-size:.92rem}
 @media (max-width:760px){.ab-founder{grid-template-columns:1fr}}
 
-/* team */
-.ab-team{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; max-width:860px}
-.member{margin:0; background:#fff; border:1px solid #D0E5D9; border-radius:22px; overflow:hidden; text-align:center; box-shadow:0 10px 30px rgba(7,83,61,.07); transition:transform .25s ease}
-.member:hover{transform:translateY(-4px)}
-.member img{display:block; width:100%; aspect-ratio:210/240; object-fit:cover; object-position:top; background:var(--mint)}
-.member figcaption{padding:14px; font-weight:800}
+/* team: photo cards with a hover reveal (expanding shade + contact icons) */
+.ab-team{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px}
+.member{margin:0; background:#fff; border:1px solid #D0E5D9; border-radius:28px; overflow:hidden; box-shadow:0 10px 30px rgba(7,83,61,.07); transition:transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .3s, opacity .7s ease}
+.member:hover{transform:translateY(-6px); box-shadow:0 22px 46px rgba(7,83,61,.16)}
+.member.m-pre{opacity:0; transform:translateY(28px)}
+.m-img{position:relative; overflow:hidden; aspect-ratio:210/240; background:var(--mint)}
+.m-img img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:top; transform:scale(1.22); transform-origin:50% 55%; transition:transform .6s cubic-bezier(.2,.8,.2,1)} /* scale crops the corner mark baked into the source photos */
+.member:hover .m-img img{transform:scale(1.3)}
+.m-over{position:absolute; inset:0; background:linear-gradient(rgba(7,48,45,0), rgba(7,48,45,.82)); clip-path:circle(0% at 50% 100%); transition:clip-path .6s cubic-bezier(.2,.8,.2,1)}
+.member:hover .m-over,.member:focus-within .m-over{clip-path:circle(150% at 50% 100%)}
+.member figcaption{display:grid; gap:2px; padding:14px 20px 18px; text-align:left}
+.member figcaption b{font-weight:800; font-size:1.1rem; letter-spacing:-.01em}
+.member figcaption span{font-size:.85rem; font-weight:600; color:var(--deep)}
 @media (max-width:620px){.ab-team{grid-template-columns:1fr 1fr}}
-@media (prefers-reduced-motion: reduce){.member{transition:none}.member:hover{transform:none}}
+@media (max-width:420px){.ab-team{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){.member,.m-over,.m-img img{transition:none}.member:hover{transform:none}.member.m-pre{opacity:1; transform:none}}
 
 /* recognition + events */
 .ab-badges{display:flex; flex-wrap:wrap; justify-content:center; gap:12px}
