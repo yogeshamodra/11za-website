@@ -3240,3 +3240,26 @@ header.top.scrolled .nav { padding-block: 20px; } /* same height when scrolled, 
   .brand .logo { width: 118px; }
   header.top .nav, header.top.scrolled .nav { padding-block: 14px; }
 }
+
+/* header: keep labels on one line with both CTA buttons */
+.links>a,.dd>button,.nav-cta .login,.nav-cta .btn{white-space:nowrap}
+.links>a,.dd>button{padding-inline:9px;font-size:.92rem}
+.nav-cta{gap:8px}
+.nav-cta .btn{padding:10px 16px;font-size:.88rem}
+.nav-cta .login{padding:8px 6px}
+@media (min-width:1061px) and (max-width:1240px){
+  .links,.nav-cta{display:none}
+  .menu{display:block}
+}
+
+/* header: AI Calls removed from the bar, so give the links more room */
+.links{margin-left:24px;gap:6px}
+.links>a,.dd>button{padding-inline:12px;font-size:.95rem}
+@media (min-width:1061px) and (max-width:1240px){
+  .links{display:flex}
+  .nav-cta{display:flex}
+  .menu{display:none}
+  .links{margin-left:8px;gap:0}
+  .links>a,.dd>button{padding-inline:8px;font-size:.9rem}
+  .nav-cta .btn{padding:10px 13px}
+}
