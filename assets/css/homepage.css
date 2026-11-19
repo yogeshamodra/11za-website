@@ -3232,11 +3232,11 @@ a {
 .logo-img.full { aspect-ratio: 1508 / 692; object-fit: contain; }
 
 /* larger header with the full logo (tagline visible) */
-.brand .logo { width: 150px; transition: width .25s; }
+.brand .logo { width: 150px; }
 header.top .nav { padding-block: 20px; }
-header.top.scrolled .nav { padding-block: 10px; }
-header.top.scrolled .brand .logo { width: 118px; }
+header.top.scrolled .nav { padding-block: 20px; } /* same height when scrolled, so the page does not jump */
+
 @media (max-width: 760px) {
   .brand .logo { width: 118px; }
-  header.top .nav { padding-block: 14px; }
+  header.top .nav, header.top.scrolled .nav { padding-block: 14px; }
 }

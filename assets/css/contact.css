@@ -124,3 +124,7 @@ main>section.ct-hero.pr-hero:not(.hero)::before { z-index: -1; background: radia
 .su-fb { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; }
 .su-fb[disabled] { opacity: .6; cursor: wait; }
 .su-ok { background: var(--mint); border: 1px solid #BFE8D4; color: #07533D; font-weight: 600; border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
+
+/* error text from the original signup scripts (they toggle Bootstrap's d-none) */
+.ct-form .text-danger { color: var(--red); font-size: .82rem; font-weight: 600; }
+.ct-form select { appearance: auto; }
