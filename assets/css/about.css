@@ -100,12 +100,23 @@ main.about>section.ab-stats{padding-block:clamp(40px,6vw,64px)}
 .ab-founder .fh h2{margin:0; color:#fff; font-size:clamp(2rem,4.6vw,3.2rem); letter-spacing:-.03em; line-height:1.05}
 .ab-founder .fgrid{display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:clamp(24px,5vw,56px); align-items:start}
 .ab-founder .avw{width:100%; max-width:340px; aspect-ratio:233/287; overflow:hidden; border-radius:18px; background:#173048; border:1px solid rgba(144,236,185,.35)}
-.ab-founder .av{display:block; width:100%; height:100%; object-fit:cover; object-position:top; transform:scale(1.12); transform-origin:100% 60%} /* crops the corner mark baked into the source photo */
+.ab-founder .av{display:block; width:100%; height:100%; object-fit:cover; object-position:top; transform:scale(1.12); transform-origin:100% 60%; transition:transform 1.5s cubic-bezier(.2,.8,.2,1)} /* crops the corner mark baked into the source photo */
 .ab-founder .body{display:grid; gap:18px; justify-items:start; align-content:start}
 .ab-founder .quote{font-size:1.05rem; line-height:1.7; font-weight:500; color:#E6EEF5; margin:0}
-.ab-founder .who{display:grid; border-left:3px solid var(--green); padding-left:14px}
+.ab-founder .who{position:relative; display:grid; padding-left:17px}
+.ab-founder .who::before{content:""; position:absolute; left:0; top:0; bottom:0; width:3px; border-radius:3px; background:var(--green); transform-origin:top; transition:transform .8s cubic-bezier(.2,.8,.2,1) .8s}
 .ab-founder .who b{color:#fff; font-size:1.05rem}
 .ab-founder .who span{color:var(--mist); font-size:.92rem}
+/* founder: reveal on scroll (the fo-pre class is added by script and removed when the card is in view) */
+.ab-founder .fh,.ab-founder .avw,.ab-founder .body{transition:opacity .8s ease, transform .9s cubic-bezier(.2,.8,.2,1)}
+.ab-founder .avw{transition-delay:.15s}
+.ab-founder .body{transition-delay:.3s}
+.ab-founder.fo-pre .fh{opacity:0; transform:translateY(24px)}
+.ab-founder.fo-pre .avw{opacity:0; transform:translateX(-44px)}
+.ab-founder.fo-pre .body{opacity:0; transform:translateX(44px)}
+.ab-founder.fo-pre .av{transform:scale(1.32)}
+.ab-founder.fo-pre .who::before{transform:scaleY(0)}
+@media (prefers-reduced-motion: reduce){.ab-founder .fh,.ab-founder .avw,.ab-founder .body,.ab-founder .av,.ab-founder .who::before{transition:none}.ab-founder.fo-pre .fh,.ab-founder.fo-pre .avw,.ab-founder.fo-pre .body{opacity:1; transform:none}.ab-founder.fo-pre .av{transform:scale(1.12)}.ab-founder.fo-pre .who::before{transform:none}}
 @media (max-width:760px){.ab-founder .fgrid{grid-template-columns:1fr}.ab-founder .avw{max-width:300px}}
 
 /* team: photo cards with a hover reveal (expanding shade + contact icons) */
