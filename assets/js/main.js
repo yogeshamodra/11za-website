@@ -49,11 +49,11 @@ const LOGO_PATHS = [
     "#0D163F",
   ],
 ];
-const logoSvg = () =>
-  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 754 240" role="img" aria-label="11za" style="display:block;width:100%;height:auto">${LOGO_PATHS.map(([d, f]) => `<path d="${d}" fill="${f}"/>`).join("")}</svg>`;
+const logoSvg = (full) =>
+  `<img class="logo-img${full ? " full" : ""}" src="assets/images/11ZA_logo.png" alt="11za" width="1508" height="${full ? 692 : 530}">`;
 document
   .querySelectorAll("[data-logo]")
-  .forEach((el) => (el.innerHTML = logoSvg()));
+  .forEach((el) => (el.innerHTML = logoSvg(!!el.closest("footer"))));
 
 function wireShots(root = document) {
   root.querySelectorAll(".shot img").forEach((img) => {
