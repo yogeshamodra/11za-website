@@ -95,14 +95,18 @@ main.about>section.ab-stats{padding-block:clamp(40px,6vw,64px)}
 @media (max-width:520px){.ab-steps{grid-template-columns:1fr}}
 
 /* founder */
-.ab-founder{display:grid; grid-template-columns:minmax(0,300px) minmax(0,1fr); gap:clamp(24px,5vw,56px); align-items:center; border-radius:30px; padding:clamp(24px,4vw,44px); border:1px solid rgba(9,175,114,.3); box-shadow:0 30px 70px rgba(13,22,63,.22); overflow:hidden}
-.ab-founder .av{width:100%; max-width:300px; aspect-ratio:233/287; object-fit:cover; object-position:top; border-radius:22px; background:#173048; border:1px solid rgba(144,236,185,.35); justify-self:center}
-.ab-founder .body{display:grid; gap:18px; justify-items:start}
-.ab-founder .quote{font-size:clamp(1.15rem,2.2vw,1.55rem); line-height:1.45; font-weight:600; color:#fff}
+.ab-founder{display:grid; gap:clamp(20px,3vw,32px); border-radius:30px; padding:clamp(24px,4vw,44px); border:1px solid rgba(9,175,114,.3); box-shadow:0 30px 70px rgba(13,22,63,.22); overflow:hidden}
+.ab-founder .fh{display:grid; gap:6px; justify-items:start}
+.ab-founder .fh h2{margin:0; color:#fff; font-size:clamp(2rem,4.6vw,3.2rem); letter-spacing:-.03em; line-height:1.05}
+.ab-founder .fgrid{display:grid; grid-template-columns:minmax(0,340px) minmax(0,1fr); gap:clamp(24px,5vw,56px); align-items:start}
+.ab-founder .avw{width:100%; max-width:340px; aspect-ratio:233/287; overflow:hidden; border-radius:18px; background:#173048; border:1px solid rgba(144,236,185,.35)}
+.ab-founder .av{display:block; width:100%; height:100%; object-fit:cover; object-position:top; transform:scale(1.12); transform-origin:100% 60%} /* crops the corner mark baked into the source photo */
+.ab-founder .body{display:grid; gap:18px; justify-items:start; align-content:start}
+.ab-founder .quote{font-size:1.05rem; line-height:1.7; font-weight:500; color:#E6EEF5; margin:0}
 .ab-founder .who{display:grid; border-left:3px solid var(--green); padding-left:14px}
 .ab-founder .who b{color:#fff; font-size:1.05rem}
 .ab-founder .who span{color:var(--mist); font-size:.92rem}
-@media (max-width:760px){.ab-founder{grid-template-columns:1fr}}
+@media (max-width:760px){.ab-founder .fgrid{grid-template-columns:1fr}.ab-founder .avw{max-width:300px}}
 
 /* team: photo cards with a hover reveal (expanding shade + contact icons) */
 .ab-team{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px}
