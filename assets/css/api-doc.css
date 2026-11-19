@@ -1,0 +1,22 @@
+/* API documentation pages */
+.api-main{padding-block:clamp(40px,6vw,72px)}
+.api-wrap{max-width:1120px;margin-inline:auto;display:grid;gap:40px}
+.api-ep{display:grid;gap:18px}
+.api-ep-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.api-method{background:var(--green);color:#fff;font-weight:800;font-size:.78rem;letter-spacing:.06em;padding:5px 12px;border-radius:999px}
+.api-url{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:1.05rem;font-weight:700;color:var(--navy);background:var(--soft);border:1px solid var(--line);padding:6px 12px;border-radius:10px;word-break:break-all}
+.api-ep>p{margin:0;color:var(--muted)}
+.api-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px;align-items:start}
+.api-box{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.api-box h3{margin:0;padding:14px 20px;font-size:.95rem;background:var(--soft);border-bottom:1px solid var(--line)}
+.api-scroll{overflow-x:auto}
+.api-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.api-table th,.api-table td{text-align:left;padding:12px 20px;border-bottom:1px solid var(--line);vertical-align:top}
+.api-table tr:last-child td{border-bottom:0}
+.api-table th{font-weight:700;color:var(--navy);font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+.api-table td:first-child{font-weight:700;color:var(--navy);white-space:nowrap}
+.api-table code,.api-tag{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.8rem;padding:2px 8px;border-radius:6px;background:#EEF1F8;color:#3b4570;white-space:nowrap}
+.api-tag.req{background:#FDECEC;color:#C0392B;font-weight:700}
+.api-tag.opt{background:var(--mint);color:#0A8A66;font-weight:700}
+.api-code{margin:0;padding:18px 20px;background:#0D163F;color:#DCE4FF;font-size:.85rem;line-height:1.6;overflow-x:auto;white-space:pre}
+@media (max-width:900px){.api-grid{grid-template-columns:1fr}}
