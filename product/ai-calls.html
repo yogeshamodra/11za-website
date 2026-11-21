@@ -60,7 +60,27 @@
           <a class="btn btn-line" href="../pricing.html">See pricing</a>
         </div>
       </div>
-      <div class="pshot"><img src="../assets/images/ai-voice-agent.png" alt="11za AI voice agent" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="pshot-ph">Screenshot needed: ai-voice-agent.png</span></div>
+      <div class="voice-card" id="voiceCard">
+        <div class="vc-top">
+          <span class="vc-live"><i></i>Live sample</span>
+          <span class="vc-time"><span id="vcCur">0:00</span> / <span id="vcDur">--:--</span></span>
+        </div>
+        <div class="vc-main">
+          <button class="vc-play" id="vcPlay" type="button" aria-label="Play voice sample">
+            <svg class="i-play" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+            <svg class="i-pause" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg>
+          </button>
+          <div class="vc-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="vc-bar" id="vcBar" role="slider" aria-label="Seek" tabindex="0"><div id="vcFill"></div></div>
+        <div class="vc-copy">
+          <b>Hear the 11za AI voice agent</b>
+          <span>A real sample of how it talks to a new lead.</span>
+        </div>
+        <audio id="vcAudio" preload="none">
+          <source src="../assets/audio/ai-voice-demo.wav" type="audio/wav">
+        </audio>
+      </div>
     </div>
   </div>
 </section>
@@ -83,13 +103,6 @@
         <li><b>Books the visit or demo</b><span>And sends the WhatsApp confirmation</span></li>
         <li><b>Summary lands in your inbox</b><span>Your team picks up from there</span></li>
       </ol>
-      <div class="audio-demo">
-        <div>
-          <b>Listen to the AI voice</b>
-          <span>A short sample of the 11za AI voice agent.</span>
-        </div>
-        <audio controls preload="none" src="../assets/audio/ai-voice-demo.wav">Your browser does not support audio.</audio>
-      </div>
         </div>
       </section>
 
@@ -121,7 +134,23 @@
           <p>Every call is logged with a summary in the shared inbox, so the next step is clear.</p>
           <ul><li><svg class="ck" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#09AF72" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Call summary in the inbox</li><li><svg class="ck" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#09AF72" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Hand over to the right salesperson</li><li><svg class="ck" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#09AF72" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>Follow up on WhatsApp</li></ul>
         </div>
-        <div class="pshot"><img src="../assets/images/inbox.png" alt="Summary in the shared inbox" loading="lazy" onerror="this.parentNode.classList.add('missing')"><span class="pshot-ph">Screenshot needed: inbox.png</span></div>
+        <div class="call-sum" aria-label="Sample AI call summary">
+          <div class="cs-head">
+            <span class="cs-av">RS</span>
+            <div><b>Rahul Sharma</b><span>+91 98•••• 4210 · Website enquiry</span></div>
+            <span class="cs-tag">Hot lead</span>
+          </div>
+          <div class="cs-meta"><span>📞 AI call · 2 min 48 s</span><span>Today, 11:04 PM</span></div>
+          <p class="cs-text">Rahul is looking for a 2 BHK in Baner, Pune. He is ready to buy within 2 months and asked for a site visit this weekend.</p>
+          <dl class="cs-grid">
+            <div><dt>Budget</dt><dd>₹70–80 lakh</dd></div>
+            <div><dt>Timeline</dt><dd>Within 2 months</dd></div>
+            <div><dt>Location</dt><dd>Baner, Pune</dd></div>
+            <div><dt>Need</dt><dd>2 BHK, self-use</dd></div>
+          </dl>
+          <div class="cs-next"><b>Next step</b><span>Site visit booked: Sat, 11:00 AM. WhatsApp confirmation sent. Assigned to Priya (Sales).</span></div>
+          <small class="cs-note">Sample summary for illustration</small>
+        </div>
       </div></div>
   </div>
 </section>
@@ -131,7 +160,7 @@
     <div class="head center"><span class="eyebrow">Use cases</span><h2>How businesses use it</h2></div>
     <div class="pr-uc" data-tabs>
       <div class="pr-tabs" role="tablist" aria-label="Industry"><button type="button" role="tab" id="uc-t0" aria-controls="uc-p0" aria-selected="true" tabindex="0">Real estate</button><button type="button" role="tab" id="uc-t1" aria-controls="uc-p1" aria-selected="false" tabindex="-1">Education &amp; coaching</button><button type="button" role="tab" id="uc-t2" aria-controls="uc-p2" aria-selected="false" tabindex="-1">Clinics &amp; hospitals</button><button type="button" role="tab" id="uc-t3" aria-controls="uc-p3" aria-selected="false" tabindex="-1">D2C &amp; e-commerce</button></div>
-      <div class="pr-panel" role="tabpanel" id="uc-p0" aria-labelledby="uc-t0"><div class="pr-uc-img"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span class="lb">Real estate</span><img src="../assets/images/usecases/real-estate.png" alt="Real estate use case" loading="lazy" onerror="this.remove()"></div><div class="pr-uc-body"><h3>Site visits</h3><p>Qualify budget and location, then book the site visit.</p></div></div><div class="pr-panel" role="tabpanel" id="uc-p1" aria-labelledby="uc-t1" hidden><div class="pr-uc-img"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span class="lb">Education &amp; coaching</span><img src="../assets/images/usecases/education.png" alt="Education and coaching use case" loading="lazy" onerror="this.remove()"></div><div class="pr-uc-body"><h3>Demo classes</h3><p>Call new enquiries and book demo classes.</p></div></div><div class="pr-panel" role="tabpanel" id="uc-p2" aria-labelledby="uc-t2" hidden><div class="pr-uc-img"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></svg><span class="lb">Clinics &amp; hospitals</span><img src="../assets/images/usecases/healthcare.png" alt="Clinics and hospitals use case" loading="lazy" onerror="this.remove()"></div><div class="pr-uc-body"><h3>Appointments</h3><p>Confirm what the patient needs and book the appointment.</p></div></div><div class="pr-panel" role="tabpanel" id="uc-p3" aria-labelledby="uc-t3" hidden><div class="pr-uc-img"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.4 11h10.2L20 8H6.2"/></svg><span class="lb">D2C &amp; e-commerce</span><img src="../assets/images/usecases/d2c-ecommerce.png" alt="D2C and e-commerce use case" loading="lazy" onerror="this.remove()"></div><div class="pr-uc-body"><h3>Lead follow-up</h3><p>Call new leads from ads and forms before they go cold.</p></div></div>
+      <div class="pr-panel" role="tabpanel" id="uc-p0" aria-labelledby="uc-t0"><div class="pr-uc-img"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span class="lb">Real estate</span><img src="../assets/images/usecases/real-estate.png" alt="Real estate use case" loading="lazy" onerror="this.remove()"></div><div class="pr-uc-body"><h3>Site visits</h3><p>Qualify budget and location, then book the site visit.</p><div class="uc-clip"><button type="button" class="uc-play" aria-label="Play Real estate voice sample"><svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg></button><span class="uc-lbl"><b>Hear a Real estate call</b><span class="uc-st">Voice sample</span></span><span class="uc-bar"><i></i></span><audio preload="none" src="../assets/audio/ai-voice-real-estate.wav"></audio></div></div></div><div class="pr-panel" role="tabpanel" id="uc-p1" aria-labelledby="uc-t1" hidden><div class="pr-uc-img"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span class="lb">Education &amp; coaching</span><img src="../assets/images/usecases/education.png" alt="Education and coaching use case" loading="lazy" onerror="this.remove()"></div><div class="pr-uc-body"><h3>Demo classes</h3><p>Call new enquiries and book demo classes.</p><div class="uc-clip"><button type="button" class="uc-play" aria-label="Play Education and coaching voice sample"><svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg></button><span class="uc-lbl"><b>Hear a Education &amp; coaching call</b><span class="uc-st">Voice sample</span></span><span class="uc-bar"><i></i></span><audio preload="none" src="../assets/audio/ai-voice-education.wav"></audio></div></div></div><div class="pr-panel" role="tabpanel" id="uc-p2" aria-labelledby="uc-t2" hidden><div class="pr-uc-img"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></svg><span class="lb">Clinics &amp; hospitals</span><img src="../assets/images/usecases/healthcare.png" alt="Clinics and hospitals use case" loading="lazy" onerror="this.remove()"></div><div class="pr-uc-body"><h3>Appointments</h3><p>Confirm what the patient needs and book the appointment.</p><div class="uc-clip"><button type="button" class="uc-play" aria-label="Play Clinics and hospitals voice sample"><svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg></button><span class="uc-lbl"><b>Hear a Clinics &amp; hospitals call</b><span class="uc-st">Voice sample</span></span><span class="uc-bar"><i></i></span><audio preload="none" src="../assets/audio/ai-voice-healthcare.wav"></audio></div></div></div><div class="pr-panel" role="tabpanel" id="uc-p3" aria-labelledby="uc-t3" hidden><div class="pr-uc-img"><svg class="ic" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#0A8A66" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.4 11h10.2L20 8H6.2"/></svg><span class="lb">D2C &amp; e-commerce</span><img src="../assets/images/usecases/d2c-ecommerce.png" alt="D2C and e-commerce use case" loading="lazy" onerror="this.remove()"></div><div class="pr-uc-body"><h3>Lead follow-up</h3><p>Call new leads from ads and forms before they go cold.</p><div class="uc-clip"><button type="button" class="uc-play" aria-label="Play D2C and e-commerce voice sample"><svg class="i-play" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><svg class="i-pause" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4.5" height="14" rx="1.2"/><rect x="13.5" y="5" width="4.5" height="14" rx="1.2"/></svg></button><span class="uc-lbl"><b>Hear a D2C &amp; e-commerce call</b><span class="uc-st">Voice sample</span></span><span class="uc-bar"><i></i></span><audio preload="none" src="../assets/audio/ai-voice-d2c-ecommerce.wav"></audio></div></div></div>
     </div>
   </div>
 </section>
@@ -139,7 +168,7 @@
 <section class="pr-sec">
   <div class="container wrap">
     <div class="head center"><span class="eyebrow">FAQ</span><h2>Questions, answered.</h2></div>
-    <div class="faq"><details><summary>What are AI Calls?</summary><p>A new 11za feature: an AI voice agent that calls new leads within seconds, asks your qualifying questions, books visits or demos and logs a summary in your inbox.</p></details><details><summary>Where do the leads come from?</summary><p>From ads, forms, IndiaMART or your website.</p></details><details><summary>How do I get access?</summary><p>AI Calls is in early access. Book a demo and our team will confirm availability and the details for your business.</p></details></div>
+    <div class="faq"><details><summary>What are AI Calls?</summary><p>A new 11za feature: an AI voice agent that calls new leads within seconds, asks your qualifying questions, books visits or demos and logs a summary in your inbox.</p></details><details><summary>What happens after the call?</summary><p>The call is logged with a summary in your shared inbox. If a visit or demo was booked, a WhatsApp confirmation is sent, and your team picks up from the summary.</p></details><details><summary>How do I get access?</summary><p>AI Calls is in early access. Book a demo and our team will confirm availability and the details for your business.</p></details></div>
   </div>
 </section>
 
@@ -199,5 +228,53 @@
 
 
 <script src="../assets/js/product.js"></script>
+<script>
+(function(){
+  var a=document.getElementById('vcAudio'),card=document.getElementById('voiceCard'),
+      btn=document.getElementById('vcPlay'),fill=document.getElementById('vcFill'),
+      bar=document.getElementById('vcBar'),cur=document.getElementById('vcCur'),dur=document.getElementById('vcDur');
+  if(!a)return;
+  function f(s){s=Math.floor(s||0);return Math.floor(s/60)+':'+('0'+s%60).slice(-2);}
+  btn.addEventListener('click',function(){a.paused?a.play():a.pause();});
+  a.addEventListener('play',function(){card.classList.add('playing');btn.setAttribute('aria-label','Pause voice sample');});
+  a.addEventListener('pause',function(){card.classList.remove('playing');btn.setAttribute('aria-label','Play voice sample');});
+  a.addEventListener('ended',function(){card.classList.remove('playing');fill.style.width='0';cur.textContent='0:00';});
+  a.addEventListener('loadedmetadata',function(){dur.textContent=f(a.duration);});
+  a.addEventListener('timeupdate',function(){
+    cur.textContent=f(a.currentTime);
+    if(a.duration)fill.style.width=(a.currentTime/a.duration*100)+'%';
+  });
+  bar.addEventListener('click',function(e){
+    if(!a.duration)return;
+    var r=bar.getBoundingClientRect();a.currentTime=a.duration*((e.clientX-r.left)/r.width);
+  });
+  bar.addEventListener('keydown',function(e){
+    if(!a.duration)return;
+    if(e.key==='ArrowRight')a.currentTime=Math.min(a.duration,a.currentTime+5);
+    if(e.key==='ArrowLeft')a.currentTime=Math.max(0,a.currentTime-5);
+  });
+  a.load();
+})();
+</script>
+<script>
+(function(){
+  var clips=document.querySelectorAll('.uc-clip');
+  clips.forEach(function(c){
+    var a=c.querySelector('audio'),b=c.querySelector('.uc-play'),f=c.querySelector('.uc-bar i'),st=c.querySelector('.uc-st');
+    b.addEventListener('click',function(){
+      if(!a.paused){a.pause();return;}
+      document.querySelectorAll('audio').forEach(function(o){if(o!==a)o.pause();});
+      a.play().catch(function(){});
+    });
+    a.addEventListener('play',function(){c.classList.add('playing');st.textContent='Playing…';});
+    a.addEventListener('pause',function(){c.classList.remove('playing');st.textContent='Voice sample';});
+    a.addEventListener('ended',function(){f.style.width='0';});
+    a.addEventListener('timeupdate',function(){if(a.duration)f.style.width=(a.currentTime/a.duration*100)+'%';});
+    a.addEventListener('error',function(){c.classList.add('na');st.textContent='Sample coming soon';b.disabled=true;});
+  });
+  var main=document.getElementById('vcAudio');
+  if(main)main.addEventListener('play',function(){clips.forEach(function(c){c.querySelector('audio').pause();});});
+})();
+</script>
 </body>
 </html>
