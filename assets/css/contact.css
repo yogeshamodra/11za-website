@@ -128,3 +128,12 @@ main>section.ct-hero.pr-hero:not(.hero)::before { z-index: -1; background: radia
 /* error text from the original signup scripts (they toggle Bootstrap's d-none) */
 .ct-form .text-danger { color: var(--red); font-size: .82rem; font-weight: 600; }
 .ct-form select { appearance: auto; }
+
+
+/* social icons: same look as the footer (plain row of round white buttons) */
+.ct-social { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding: 4px 0 0; }
+.ct-social b { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ct-soc-row { display: flex; gap: 10px; }
+.ct-soc-row a { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: #fff; border: 1px solid #CDE4D6; color: var(--navy); transition: background .2s, color .2s, transform .2s; }
+.ct-soc-row a:hover { background: var(--green); border-color: var(--green); color: #fff; transform: translateY(-2px); }
+.ct-soc-row a svg { width: 18px; height: 18px; }
