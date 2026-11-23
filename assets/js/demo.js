@@ -2,7 +2,7 @@
 (function () {
   "use strict";
 
-  var CALENDLY_URL = "https://calendly.com/engees/schedule-a-demo";
+  var CALENDLY_URL = "https://cal.id/11za/11za-personalized-product-demo";
 
   /* sticky header shadow (same as the other pages) */
   var hdr = document.getElementById("top");

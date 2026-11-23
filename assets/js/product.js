@@ -75,12 +75,45 @@
       panels.forEach(function (p, n) { p.hidden = n !== i; });
     }
 
+    // Auto-advance with a progress bar on the active tab (vertical use-case tabs only)
+    var auto = box.classList.contains("pr-uc") && !matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var cur = 0, inView = true, hold = 0;
+    function run() {
+      tabs.forEach(function (t, n) {
+        var bar = t.querySelector(".uc-prog");
+        if (!bar) return;
+        bar.classList.remove("run");
+        if (n === cur) { void bar.offsetWidth; bar.classList.add("run"); }
+      });
+    }
+    if (auto) {
+      tabs.forEach(function (t, n) {
+        var bar = document.createElement("i");
+        bar.className = "uc-prog";
+        bar.setAttribute("aria-hidden", "true");
+        bar.addEventListener("animationend", function () { if (n === cur && !hold) { cur = (cur + 1) % tabs.length; select(cur, false); } });
+        t.appendChild(bar);
+      });
+      var sync = function () { box.classList.toggle("uc-paused", hold > 0 || !inView); };
+      box.addEventListener("mouseenter", function () { hold++; sync(); });
+      box.addEventListener("mouseleave", function () { hold = Math.max(0, hold - 1); sync(); });
+      box.addEventListener("play", function () { hold++; sync(); }, true);
+      box.addEventListener("pause", function () { hold = Math.max(0, hold - 1); sync(); }, true);
+      box.addEventListener("ended", function () { hold = Math.max(0, hold - 1); sync(); }, true);
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) { inView = en[0].isIntersecting; sync(); }, { threshold: 0.3 }).observe(box);
+      }
+      var baseSelect = select;
+      select = function (i, focus) { cur = i; baseSelect(i, focus); run(); };
+      run();
+    }
+
     tabs.forEach(function (t, i) {
       t.addEventListener("click", function () { select(i, false); });
       t.addEventListener("keydown", function (e) {
         var next = null;
-        if (e.key === "ArrowRight") next = (i + 1) % tabs.length;
-        else if (e.key === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (i + 1) % tabs.length;
+        else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (i - 1 + tabs.length) % tabs.length;
         else if (e.key === "Home") next = 0;
         else if (e.key === "End") next = tabs.length - 1;
         if (next !== null) { e.preventDefault(); select(next, true); }
