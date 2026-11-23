@@ -80,7 +80,7 @@ const TOUR = [
     url: "app.11za.in/inbox",
     a: "Assigned in 2 seconds",
     a2: "Auto-routing · sales",
-    b: "4 agents · 1 number",
+    b: "4 Team Members · 1 number",
     b2: "Shared inbox",
     pop: [
       ["c", "Hi, 3BHK price at Vesu?"],

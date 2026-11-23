@@ -715,3 +715,13 @@
 .logo-grid.apps .app-name { order: 1; }
 .logo-grid.apps .app-tags { order: 2; margin: 2px 0 0; }
 .logo-grid.apps .app-desc { order: 3; margin-top: 10px; }
+
+/* Integration tags: pill chips (max 2), centred under the name */
+.logo-grid.apps .app-tags { display: flex !important; flex-wrap: wrap; justify-content: center !important; gap: 6px; margin: 8px 0 0; padding: 0 16px; }
+.logo-grid.apps .app-tags span,
+.logo-grid.apps .app-tags span:last-child,
+.logo-grid.apps .app-tags span:not(:last-child) { display: inline-flex !important; align-items: center; padding: 3px 11px; border-radius: 999px; background: #E8F8F1; color: #067a50; border: 1px solid #CDEEDD; font-size: .72rem; font-weight: 700; line-height: 1.4; letter-spacing: .01em; white-space: nowrap; }
+.logo-grid.apps .app-tags span:nth-child(n+3) { display: none !important; }
+.logo-grid.apps li:hover .app-tags span { background: #D6F3E5; border-color: #09AF72; }
+.logo-grid.apps .app-desc { order: 2; margin: 10px 0 0; }
+.logo-grid.apps .app-tags { order: 3; margin: 12px 0 0; }
