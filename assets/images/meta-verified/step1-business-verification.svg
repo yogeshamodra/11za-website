@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" fill="#F6F9F8"/>
+<rect x="150" y="40" width="340" height="280" rx="16" fill="#fff" stroke="#C1E0D2" stroke-width="2"/>
+<rect x="150" y="40" width="340" height="44" rx="16" fill="#EAF7F1"/><rect x="150" y="68" width="340" height="16" fill="#EAF7F1"/>
+<circle cx="174" cy="62" r="6" fill="#09AF72"/><circle cx="194" cy="62" r="6" fill="#C1E0D2"/><circle cx="214" cy="62" r="6" fill="#C1E0D2"/>
+<text x="180" y="124" font-family="Arial,sans-serif" font-size="17" font-weight="700" fill="#07533D">Business verification</text>
+<rect x="180" y="142" width="280" height="38" rx="8" fill="#F6F9F8" stroke="#C1E0D2"/><text x="194" y="166" font-family="Arial,sans-serif" font-size="14" fill="#5b6b66">Legal business name</text>
+<rect x="180" y="190" width="280" height="38" rx="8" fill="#F6F9F8" stroke="#C1E0D2"/><text x="194" y="214" font-family="Arial,sans-serif" font-size="14" fill="#5b6b66">GST / registration document</text>
+<rect x="180" y="248" width="150" height="40" rx="20" fill="#09AF72"/><text x="255" y="273" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">Submit</text>
+<circle cx="450" cy="262" r="30" fill="#fff" stroke="#09AF72" stroke-width="4"/><path d="M437 262l9 10 17-20" fill="none" stroke="#09AF72" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>

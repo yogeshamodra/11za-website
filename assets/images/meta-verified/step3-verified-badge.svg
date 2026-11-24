@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" fill="#F6F9F8"/>
+<rect x="215" y="24" width="210" height="312" rx="28" fill="#fff" stroke="#C1E0D2" stroke-width="3"/>
+<rect x="215" y="24" width="210" height="64" rx="28" fill="#09AF72"/><rect x="215" y="60" width="210" height="28" fill="#09AF72"/>
+<circle cx="250" cy="58" r="18" fill="#fff"/><text x="250" y="65" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#09AF72" text-anchor="middle">B</text>
+<text x="280" y="54" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#fff">Your Business</text>
+<g transform="translate(406 52)"><path d="M0-12l4 3 5-1 2 5 5 2-1 5 3 4-3 4 1 5-5 2-2 5-5-1-4 3-4-3-5 1-2-5-5-2 1-5-3-4 3-4-1-5 5-2 2-5 5 1z" transform="scale(.9) translate(-12 12)" fill="#1D9BF0"/></g>
+<rect x="235" y="108" width="130" height="38" rx="14" fill="#EAF7F1"/><rect x="275" y="162" width="130" height="38" rx="14" fill="#DCF8C6"/><rect x="235" y="216" width="100" height="38" rx="14" fill="#EAF7F1"/>
+<text x="320" y="296" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#07533D" text-anchor="middle">Verified business</text></svg>

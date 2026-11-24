@@ -77,7 +77,7 @@
 
     // Auto-advance with a progress bar on the active tab (vertical use-case tabs only)
     var auto = box.classList.contains("pr-uc") && !matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var cur = 0, inView = true, hold = 0;
+    var cur = 0, inView = false, hold = 0;
     function run() {
       tabs.forEach(function (t, n) {
         var bar = t.querySelector(".uc-prog");
@@ -95,14 +95,15 @@
         t.appendChild(bar);
       });
       var sync = function () { box.classList.toggle("uc-paused", hold > 0 || !inView); };
+      box.classList.add("uc-paused");
       box.addEventListener("mouseenter", function () { hold++; sync(); });
       box.addEventListener("mouseleave", function () { hold = Math.max(0, hold - 1); sync(); });
       box.addEventListener("play", function () { hold++; sync(); }, true);
       box.addEventListener("pause", function () { hold = Math.max(0, hold - 1); sync(); }, true);
       box.addEventListener("ended", function () { hold = Math.max(0, hold - 1); sync(); }, true);
       if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (en) { inView = en[0].isIntersecting; sync(); }, { threshold: 0.3 }).observe(box);
-      }
+        new IntersectionObserver(function (en) { inView = en[0].isIntersecting; sync(); }, { threshold: 0.45 }).observe(box);
+      } else { inView = true; sync(); }
       var baseSelect = select;
       select = function (i, focus) { cur = i; baseSelect(i, focus); run(); };
       run();

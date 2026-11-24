@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360"><rect width="640" height="360" fill="#F6F9F8"/>
+<rect x="140" y="70" width="360" height="220" rx="16" fill="#fff" stroke="#C1E0D2" stroke-width="2"/>
+<text x="170" y="112" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#5b6b66" letter-spacing="1">DISPLAY NAME</text>
+<rect x="170" y="128" width="300" height="50" rx="10" fill="#F6F9F8" stroke="#C1E0D2"/><text x="188" y="160" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#07533D">Your Business Name</text>
+<rect x="170" y="204" width="170" height="40" rx="20" fill="#EAF7F1" stroke="#09AF72" stroke-width="2"/>
+<circle cx="196" cy="224" r="10" fill="#09AF72"/><path d="M191 224l4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="214" y="229" font-family="Arial,sans-serif" font-size="15" font-weight="700" fill="#07533D">Approved</text>
+<g transform="translate(540 110) rotate(8)"><rect width="70" height="46" rx="10" fill="#07533D"/><text x="35" y="29" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">Meta</text></g></svg>

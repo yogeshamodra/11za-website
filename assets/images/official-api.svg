@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EAF7F1"/><stop offset="1" stop-color="#D3EFE2"/></linearGradient></defs>
+<rect width="800" height="600" fill="url(#g)"/>
+<g stroke="#09AF72" stroke-width="3" stroke-dasharray="8 8" fill="none" opacity=".55"><path d="M400 300 L170 150"/><path d="M400 300 L640 150"/><path d="M400 300 L170 450"/><path d="M400 300 L640 450"/></g>
+<g fill="#fff" stroke="#C1E0D2" stroke-width="2"><circle cx="170" cy="150" r="48"/><circle cx="640" cy="150" r="48"/><circle cx="170" cy="450" r="48"/><circle cx="640" cy="450" r="48"/></g>
+<g fill="#09AF72"><circle cx="170" cy="138" r="11"/><path d="M148 172a22 20 0 0 1 44 0z"/><circle cx="640" cy="138" r="11"/><path d="M618 172a22 20 0 0 1 44 0z"/><circle cx="170" cy="438" r="11"/><path d="M148 472a22 20 0 0 1 44 0z"/><circle cx="640" cy="438" r="11"/><path d="M618 472a22 20 0 0 1 44 0z"/></g>
+<circle cx="400" cy="300" r="125" fill="#fff" stroke="#C1E0D2" stroke-width="3"/>
+<circle cx="400" cy="300" r="95" fill="#09AF72"/>
+<path d="M400 240c-33 0-60 26-60 58 0 11 3 21 9 30l-9 32 34-9c8 4 17 6 26 6 33 0 60-26 60-58s-27-59-60-59z" fill="none" stroke="#fff" stroke-width="9" stroke-linejoin="round"/>
+<path d="M380 285c4 14 18 28 33 33l10-12-14-7-7 5c-6-3-10-8-13-14l5-7-7-14z" fill="#fff"/>
+<g transform="translate(468 214)"><circle r="30" fill="#fff" stroke="#09AF72" stroke-width="4"/><path d="M-13 1l9 10 17-20" fill="none" stroke="#09AF72" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></g>
+<rect x="300" y="500" width="200" height="44" rx="22" fill="#07533D"/><text x="400" y="529" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">Official Business API</text></svg>
