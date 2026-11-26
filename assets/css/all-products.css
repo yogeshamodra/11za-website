@@ -1,0 +1,69 @@
+/* Campaign image (desktop + mobile): show the whole image, no frame, no crop */
+.pshot.campaign-img {
+  aspect-ratio: auto;
+  min-height: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  overflow: visible;
+}
+.pshot.campaign-img img {
+  position: static;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 40px rgba(7, 83, 61, .18));
+}
+
+/* Feature rows with a wide desktop + mobile image: give the image the larger column */
+.pr-rows.wide-media .pr-row {
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(24px, 4vw, 56px);
+}
+.pr-rows.wide-media .pr-row .pshot.campaign-img:hover { transform: none; }
+@media (max-width: 860px) {
+  .pr-rows.wide-media .pr-row { grid-template-columns: 1fr; }
+  .pr-rows.wide-media .pr-row .pr-text { order: 0; }
+}
+
+/* Broadcast feature rows: every image gets the same card frame so the three rows look consistent */
+.pr-rows.wide-media .pshot.campaign-img {
+  aspect-ratio: 11 / 8;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #EAF8F1;
+  border: 1px solid #C9E8D8;
+  box-shadow: 0 24px 60px -28px rgba(7, 83, 61, .35);
+}
+.pr-rows.wide-media .pshot.campaign-img img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: none;
+}
+
+/* Mirrored row: image sits on the left, so give the left column the larger share */
+.pr-rows.wide-media .pr-row.flip { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); }
+@media (max-width: 860px) {
+  .pr-rows.wide-media .pr-row.flip { grid-template-columns: 1fr; }
+}
+
+/* Frame wraps each image's own shape: no empty bands, works for any image ratio */
+.pr-rows.wide-media .pshot.campaign-img { aspect-ratio: auto; }
+.pr-rows.wide-media .pshot.campaign-img img {
+  position: static;
+  height: auto;
+  display: block;
+}
+
+/* Videos in feature rows: same card as the images, showing the whole video */
+.pr-rows.wide-media .pshot.campaign-img video {
+  position: static;
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+

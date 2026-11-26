@@ -1,0 +1,93 @@
+/* Solution pages: message templates as cards with a coloured WhatsApp preview panel */
+.mt-sec { padding-block: clamp(56px, 8vw, 104px); }
+.mt-head { max-width: 720px; margin: 0 auto clamp(30px, 5vw, 52px); text-align: center; display: grid; gap: 12px; justify-items: center; }
+.mt-head h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.7rem); letter-spacing: -.03em; line-height: 1.1; }
+.mt-head p { margin: 0; color: var(--muted, #5b6b66); }
+
+.mt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 36px);
+  max-width: 1120px;
+  margin-inline: auto;
+}
+.mt-card { display: grid; gap: 18px; align-content: start; }
+.mt-panel {
+  position: relative;
+  min-height: 330px;
+  border-radius: 18px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  padding: 22px 20px 26px;
+  transition: transform .35s cubic-bezier(.2, .8, .2, 1), box-shadow .35s;
+}
+.mt-card:hover .mt-panel { transform: translateY(-5px); box-shadow: 0 22px 44px -22px rgba(7, 83, 61, .35); }
+.mt-panel.mint { background: #D9FBEE; }
+.mt-panel.blue { background: #DCE6FF; }
+.mt-panel.cream { background: #FBF6DC; }
+/* faded phone header behind the message */
+.mt-panel::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  width: 62%;
+  height: 54px;
+  margin-left: -31%;
+  border-radius: 14px 14px 0 0;
+  background: rgba(0, 0, 0, .13);
+}
+.mt-panel::after {
+  content: "";
+  position: absolute;
+  top: 34px;
+  left: calc(50% - 31% + 16px);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, .13);
+}
+.mt-msg { position: relative; z-index: 1; width: 100%; max-width: 330px; display: grid; gap: 8px; margin-top: 30px; }
+.mt-bub {
+  background: #fff;
+  border-radius: 12px 12px 12px 3px;
+  padding: 8px 8px 12px;
+  font-size: .86rem;
+  line-height: 1.5;
+  color: #0b1220;
+  box-shadow: 0 8px 22px -10px rgba(0, 0, 0, .3);
+}
+.mt-media { display: block; width: 100%; height: 92px; border-radius: 8px; margin-bottom: 8px; }
+.mt-bub p { margin: 0; padding-inline: 4px; }
+.mt-bub em { font-style: normal; font-weight: 700; color: #0a8a66; background: rgba(9, 175, 114, .12); border-radius: 4px; padding: 0 3px; }
+.mt-btns { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; }
+.mt-btns span {
+  display: block;
+  text-align: center;
+  padding: 10px 8px;
+  border-radius: 10px;
+  background: #fff;
+  color: #027EB5;
+  font-weight: 700;
+  font-size: .86rem;
+  box-shadow: 0 8px 22px -12px rgba(0, 0, 0, .3);
+}
+.mt-card h3 { margin: 0; font-size: 1.25rem; line-height: 1.25; color: #0D163F; }
+.mt-card p.d { margin: -8px 0 0; color: var(--muted, #5b6b66); font-size: .98rem; line-height: 1.55; }
+.mt-note { text-align: center; margin: clamp(22px, 3vw, 34px) 0 0; font-size: .82rem; color: var(--muted, #5b6b66); }
+
+/* phones: swipeable row */
+@media (max-width: 860px) {
+  .mt-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(84%, 340px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mt-card { scroll-snap-align: start; }
+}
+@media (prefers-reduced-motion: reduce) { .mt-panel { transition: none; } }

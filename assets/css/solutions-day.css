@@ -1,0 +1,106 @@
+/* Solution pages: "A day in the life" redesign (vertical timeline with chat cards) */
+.dl-sec {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #062B28;
+  color: #fff;
+  padding-block: clamp(64px, 9vw, 112px);
+}
+.dl-sec::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 50% at 85% 10%, rgba(79, 224, 165, .22), transparent 70%),
+    radial-gradient(50% 40% at 5% 90%, rgba(201, 242, 102, .12), transparent 70%);
+}
+.dl-head { max-width: 720px; margin: 0 auto clamp(36px, 5vw, 64px); text-align: center; display: grid; gap: 14px; justify-items: center; }
+.dl-head .eyebrow { background: rgba(255, 255, 255, .1); color: #7DF0BD; border-color: rgba(255, 255, 255, .18); }
+.dl-head h2 { margin: 0; color: #fff; font-size: clamp(1.8rem, 3.6vw, 2.7rem); letter-spacing: -.03em; line-height: 1.1; }
+.dl-head p { margin: 0; color: #C5DDD7; }
+
+.dl-line { position: relative; display: grid; gap: clamp(28px, 4vw, 48px); max-width: 1040px; margin-inline: auto; }
+.dl-line::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 59px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #4FE0A5, rgba(79, 224, 165, .15));
+}
+.dl-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(16px, 3vw, 36px);
+  align-items: center;
+}
+.dl-time { position: relative; display: grid; justify-items: center; gap: 6px; z-index: 1; }
+.dl-time .dot {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #062B28;
+  border: 3px solid #4FE0A5;
+  font-size: 1.2rem;
+  box-shadow: 0 0 0 6px rgba(79, 224, 165, .15);
+}
+.dl-time b { font-size: .95rem; color: #7DF0BD; letter-spacing: .02em; }
+.dl-time small { font-size: .72rem; color: #9FC9BF; text-transform: uppercase; letter-spacing: .1em; }
+.dl-text h3 { margin: 0 0 8px; font-size: clamp(1.2rem, 2vw, 1.5rem); color: #fff; line-height: 1.2; }
+.dl-text p { margin: 0; color: #C5DDD7; }
+.dl-text .res { display: inline-block; margin-top: 12px; padding: 5px 12px; border-radius: 999px; background: rgba(79, 224, 165, .14); color: #7DF0BD; font-weight: 700; font-size: .8rem; }
+
+.dl-card { background: #ECE5DD; border-radius: 20px; padding: 14px; display: grid; gap: 8px; box-shadow: 0 24px 60px rgba(0, 0, 0, .35); color: #0b1220; }
+.dl-card .hd { display: flex; align-items: center; gap: 8px; padding: 2px 4px 8px; font-weight: 800; font-size: .82rem; color: #075E54; }
+.dl-card .hd i { width: 8px; height: 8px; border-radius: 50%; background: #25D366; }
+.dl-card .m { max-width: 88%; padding: 9px 12px; border-radius: 12px; font-size: .86rem; line-height: 1.4; box-shadow: 0 1px 1px rgba(0, 0, 0, .08); }
+.dl-card .m.in { background: #fff; border-top-left-radius: 4px; justify-self: start; }
+.dl-card .m.out { background: #D9FDD3; border-top-right-radius: 4px; justify-self: end; }
+.dl-card .m small { display: block; margin-top: 3px; color: #667781; font-size: .7rem; }
+.dl-card .btns { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 6px; }
+.dl-card .btns span { text-align: center; padding: 8px; border-radius: 10px; background: #fff; color: #027EB5; font-weight: 700; font-size: .82rem; box-shadow: 0 1px 1px rgba(0, 0, 0, .08); }
+.dl-card .li { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 12px; background: #fff; box-shadow: 0 1px 1px rgba(0, 0, 0, .08); }
+.dl-card .li .av { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #E5FFF2; color: #067a50; font-weight: 800; font-size: .78rem; }
+.dl-card .li div { min-width: 0; flex: 1; }
+.dl-card .li b { display: block; font-size: .84rem; }
+.dl-card .li span { display: block; font-size: .76rem; color: #667781; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dl-card .li em { flex: none; font-style: normal; font-weight: 700; font-size: .7rem; padding: 3px 9px; border-radius: 999px; background: #E5FFF2; color: #067a50; }
+.dl-note { text-align: center; margin: clamp(24px, 3vw, 36px) 0 0; font-size: .78rem; color: #9FC9BF; }
+
+@media (max-width: 860px) {
+  .dl-line::before { left: 22px; }
+  .dl-step { grid-template-columns: 46px minmax(0, 1fr); align-items: start; }
+  .dl-time { grid-row: 1 / span 2; align-self: start; justify-items: center; }
+  .dl-time b, .dl-time small { display: none; }
+  .dl-text, .dl-card { grid-column: 2; }
+  .dl-text .time-inline { display: inline; }
+}
+@media (min-width: 861px) { .dl-text .time-inline { display: none; } }
+.dl-text .time-inline { font-weight: 800; color: #7DF0BD; margin-right: 6px; }
+
+/* beat the generic main>section:not(.hero) light background in homepage.css */
+main>section.dl-sec:not(.hero) {
+  background-color: #062B28;
+  background-image: none;
+  border-top: 0;
+}
+main>section.dl-sec:not(.hero)::before {
+  z-index: -1;
+  opacity: 1;
+  -webkit-mask-image: none;
+  mask-image: none;
+  transform: none;
+  background:
+    radial-gradient(60% 50% at 85% 10%, rgba(79, 224, 165, .22), transparent 70%),
+    radial-gradient(50% 40% at 5% 90%, rgba(201, 242, 102, .12), transparent 70%);
+}
+
+/* keep the timeline line from running through the time labels */
+.dl-time b, .dl-time small { background: #062B28; padding: 2px 6px; border-radius: 6px; }
